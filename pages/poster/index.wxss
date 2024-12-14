@@ -1,0 +1,25 @@
+.wx-dialogwidth100{
+    width:100%;
+  }
+  #posterCanvas {
+    margin: 0 auto;
+  }
+  .canvasWrap {
+  margin: 10px auto;
+  text-align: center;
+  }
+  .form-group {
+    overflow: hidden;
+    position: relative;
+    padding: 20rpx 20rpx;
+    width: 95%;
+    margin:0 2.5%;
+  }
+  .form-field button{
+    width: 48%;
+    font-weight: 400;
+    background-color: #ffffff;
+    border-radius: 50rpx;
+    float: left;
+    margin: 1%;
+  }

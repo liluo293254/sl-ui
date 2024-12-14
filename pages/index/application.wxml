@@ -1,0 +1,82 @@
+<view class="container-show-footer">
+  <view class="toggle-header-bg">
+    <!-- 轮播图 -->
+    <swiper class="slide-swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{imgUrls}}" wx:key="unique">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <!-- <view class="swiperText">
+      <text class="swiperText1">说一说共享预约模式都有哪些</text>
+      <text class="swiperMore">更多</text>
+    </view> -->
+  </view>
+
+  <!-- 便捷入口 -->
+  <view class="conven">
+    <view class="conven1">
+      <view class="conven-big">
+        <view class="conven-big1">
+          <view class="conven-big-list" bindtap="hardwareScan">
+            <image src="{{host}}/static/default/wap/image/01/scan.png" alt="" />
+            <view class="conven-big-name">
+              <h4 style="letter-spacing: 4px;">添加设备</h4>
+              <text>Add Device</text>
+            </view>
+          </view>
+          <text class="mall"></text>
+          <view class="conven-big-list" bindtap="goH5Link" data-url="{{host}}/wap/controlpanel/hardware_list">
+            <image src="{{host}}/static/default/wap/image/01/equip.png" alt="" />
+            <view class="conven-big-name">
+              <h4 style="letter-spacing: 4px;">设备列表</h4>
+              <p>Device List</p>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="conven-small">
+        <block wx:for="{{centerNav}}" wx:key="unique">
+        <view class="conven-small-list"  catchtap="goPagesLink" data-url="{{item.url}}">
+          <image src="{{item.image}}" alt="" />
+          <p>{{item.name}}</p>
+        </view>
+        </block>
+        <!-- <view class="conven-small-list">
+          <image src="../../images/share.png" alt="" />
+          <p>分享管理</p>
+        </view>
+        <view class="conven-small-list">
+          <image src="../../images/wifi.png" alt="" />
+          <p>WIFI码</p>
+        </view>
+        <view class="conven-small-list" style="border-right :1px solid #fff;">
+          <image src="../../images/help.png" alt="" />
+          <p>帮助中心</p>
+        </view> -->
+      </view>
+    </view>
+  </view>
+  <!-- 应用列表 -->
+  <view class="apply" style="background-image:url({{apply_bgimg}});">
+    <span class="apply-name1">应用推荐</span>
+    <view class="applylist" wx:for="{{applyList}}"  wx:key="index">
+      <view class="applylist-item">
+        <image src="{{item.image}}" alt="" class="applylist-img" mode="aspectFill"  />
+      </view>
+      <view class="introduce">
+        <view class="applylist-text">
+          <text class="title">应用名称:{{item.name}}</text>
+          <text class="button">点此开通</text>
+        </view>
+        <text class="introduce-one">简介</text>
+        <text class="introduce-two">{{item.text}}</text>
+      </view>
+    </view>
+  </view>
+  
+</view>
+
+<import src="../public/footer.wxml"/>
+<template is="footer-nav" data="{{nav_list:nav_list,foot_width:foot_width}}"></template>

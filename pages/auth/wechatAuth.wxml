@@ -1,0 +1,14 @@
+
+<view class="header" style="background-color: {{header_color}};">
+  <image class="header-logo" src="{{siteInfo.logo}}" mode="scaleToFill" />
+</view>
+<view class="main">
+  <view class="title">欢迎来到【{{siteInfo.sitename}}】</view>
+  <view class="title sub-title">为了更好的体验，申请获取您的公开信息（头像、昵称等）</view>
+</view>
+<button type="primary" class="btn" bindtap="getUserProfile" style="background-color: {{button_bg_color}};box-shadow: 0px 5px 10px 0px {{button_bg_color}};color:{{button_font_color}}">授权登录</button>
+<!-- <button type="primary" class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录</button> -->
+<!-- <block wx:if="{{ !isBind }}">
+  <button type="primary" class="btn" bindtap="linkLogin" style="box-shadow:unset;background-color: #ffffff;color:{{button_bg_color}};border:1px solid {{button_bg_color}};" wx:if="{{button_font_color == '#ffffff'}}">账号登录</button>
+  <button type="primary" class="btn" bindtap="linkLogin" style="box-shadow:unset;background-color: #ffffff;color:{{button_font_color}};border:1px solid {{button_font_color}};" wx:else>账号登录</button>
+</block> -->

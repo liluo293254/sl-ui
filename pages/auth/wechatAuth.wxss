@@ -1,0 +1,43 @@
+.header{
+  position: relative;
+  width: 100%;
+  height: 300rpx;
+  overflow: hidden;
+  border-radius: 0 0 50% 50%;
+  background-color: #ffffff;
+}
+.header .header-logo{
+  display: block;
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 100%;
+  margin: 40rpx auto 50rpx;
+  border: 3px solid #eee;
+  background-color: #fff;
+}
+.main{
+  line-height: 2;
+  margin: 40rpx auto;
+}
+.main .title{
+  color: #333;
+  font-size: 24px;
+  text-align: center;
+}
+.main .sub-title{
+  color: #999;
+  font-size: 14px;
+}
+.btn[type='primary']{
+  background-color: #ffffff;
+  border-radius: 50rpx;
+  width: 80%;
+  box-shadow: 0px 5px 10px 0px #ffffff;
+  line-height: 65rpx;
+}
+.btn + .btn{
+  margin-top: 40rpx;
+}
+.tips{
+  color:#999;
+}

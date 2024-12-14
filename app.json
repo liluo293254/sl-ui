@@ -1,0 +1,64 @@
+{
+  "pages": [
+    "pages/index/community",
+    "pages/index/application",
+    "pages/index/illustrate",
+    "pages/community/detail",
+    "pages/community/index",
+    "pages/index/shoplist",
+    "pages/index/index",
+    "pages/index/shopcity",
+    "pages/index/wifi",
+    "pages/customer/customer",
+    "pages/map/map",
+    "pages/map/community",
+    "pages/auth/wechatAuth",
+    "pages/mobile/bindMobile",
+    "pages/mapaddr/mapaddr",
+    "pages/gzh/gzh",
+    "pages/sendapply/sendapply",
+    "pages/wechatPay/pay",
+    "pages/scan/wechatScan",
+    "pages/location/location",
+    "pages/prepare/prepare",
+    "pages/index/test",
+    "pages/more_shop/more_shop",
+    "pages/gomini/index",
+    "pages/order/list",
+    "pages/order/module",
+    "pages/user/access_history",
+    "pages/poster/index"
+  ],
+  "requiredPrivateInfos": [
+    "getLocation"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "衡水喜屏智慧社区",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "正在授权您获取当前位置信息"
+    }
+  },
+  "plugins": {
+    "chooseLocation": {
+      "version": "1.0.10",
+      "provider": "wx76a9a06e5b4e693e"
+    },
+    "ttslock": {
+      "version": "2.9.4",
+      "provider": "wx43d5971c94455481"
+    }
+  },
+  "usingComponents": {
+    "privacy-dialog": "/component/privacyDialog/index"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "resolveAlias": {
+    "~/*": "/*"
+  }
+}

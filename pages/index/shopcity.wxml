@@ -1,0 +1,25 @@
+<view>
+  <wxs src="./../comm.wxs" module="comm" /> 
+  <view class="wrapper">
+    <view class="itemwrap">
+      <text class="title">当前定位城市</text>
+      <view class="listwrap">
+      <view class="itemlist" bindtap="goShopList" data-id="{{shopArea[address].area_id}}" data-name="{{address}}">
+        <view class="itemTitle">{{address}}</view>
+      </view>
+    </view>
+    </view>
+    <view class="itemwrap">
+      <text class="title">已开通城市</text>
+      <view class="listwrap">
+        <view class="itemlist" bindtap="goShopList" data-id="0" data-name="全部">
+          <view class="itemTitle">全部</view>
+        </view>
+        <view class="itemlist" wx:for="{{shopArea}}" wx:key="index" bindtap="goShopList" data-id="{{item.area_id}}" data-name="{{item.area_name}}">
+          <view class="itemTitle">{{item.area_name}}</view>
+        </view>
+      </view>
+    </view>
+    </view>
+  </view>
+ 

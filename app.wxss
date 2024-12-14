@@ -1,0 +1,77 @@
+page,view,text,input,image{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+page{
+  font-size: 28rpx;
+}
+.container-show-footer{
+  padding-bottom: 76px;
+}
+.noDataImg{
+  background:unset;
+  margin: auto;
+  height: auto;
+  display: block;
+  overflow: hidden;
+}
+.noDataImg image{
+  background: unset;
+  width: 70%;
+  margin: 20px 15%;
+  position: relative;
+}
+.noDataTips{
+  width: 100%;
+  text-align: center;
+  display: block;
+  margin-bottom: 50px;
+}
+.foot-fixed {
+  position: fixed;
+  bottom: -1px;
+  z-index: 999;
+  width: 100%;
+  background: #ffffff;
+  border-top: 1px solid #E8E8E8;
+  box-shadow: 0 0 3px rgba(0,0,0,0.1);
+}
+.foot-fixed .foot-item {
+  padding: 0;
+}
+.foot-fixed .foot-item {
+  position: relative;
+}
+.foot-fixed .foot-item {
+  width: 20%;
+  float: left;
+  text-align: center;
+  color: #777;
+  padding: 5px 0 10px;
+}
+a {
+  color: #666;
+  text-decoration: none;
+}
+a {
+  background: transparent;
+}
+.foot-fixed .foot-item .foot-icon {
+  width: 24px;
+  height: 26px;
+  margin: 0 auto;
+}
+.foot-fixed .foot-item .foot-label {
+  margin: 5px 0;
+}
+.foot-fixed .foot-item .foot-label {
+  height: 15px;
+  line-height: 15px;
+  font-size: 12px;
+}
+.foot-fixed .foot-item span {
+  display: block;
+  width: 100%;
+  text-align: center;
+}

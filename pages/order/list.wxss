@@ -1,0 +1,295 @@
+/* pages/order/order.wxss */
+@import "../../utils/color.wxss";
+@import "../../utils/base.wxss";
+@import "../../utils/image.wxss";
+
+
+
+.top_nav {
+  border-radius: 10px;
+  height: 40px;
+  width: 95%;
+  margin: auto;
+
+}
+
+.nav-name {
+  display: inline-block;
+  color: #000;
+  font-size: 30rpx;
+  width: 50%;
+  text-align: center;
+  line-height: 40px;
+}
+
+.nav-hover {
+  font-weight: 600;
+  /* border-bottom: 1px solid #D3BA77; */
+}
+.nav-hover .nav-title{
+  position: relative;
+}
+.nav-hover .nav-title::after {
+  content: " ";
+  width: 30%;
+  height: 4px;
+  background: #249dee;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10px;
+}
+
+.top-down {
+  width: 8px;
+  height: 4px;
+  margin-left: 7px;
+}
+
+.order {
+  width: 92%;
+  height: auto;
+  margin: auto;
+
+}
+
+.in-progress {
+  width: 100%;
+  height: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  padding: 16px 0px;
+}
+
+.order-in {
+  width: 100%;
+  height: 22px;
+}
+
+.order-in image {
+  margin-left: 16px;
+}
+
+.order-progress {
+  margin-left: 4px;
+  text-align: center;
+  line-height: 22px;
+  font-size: 16px;
+}
+
+.share {
+  float: right;
+  line-height: 22px;
+  margin-right: 16px;
+  font-size: 13px;
+  background:unset;
+  border:unset;
+  text-align: right;
+  padding: 0 20px;
+}
+
+.room-intro {
+  width: 100%;
+  height: 60px;
+  margin-top: 31px;
+  display: flex;
+}
+
+.room-intro image {
+  margin-left: 16px;
+  border-radius: 5px;
+}
+
+.roomintro-text {
+  height: 60px;
+  margin-left: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.roomintro-name1 {
+  font-size: 14px;
+}
+
+.roomintro-name2 {
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+.room-time {
+  width: 100%;
+  height: 48px;
+  margin-top: 16.5px;
+}
+
+.room-time1 {
+  width: 90%;
+  margin: auto;
+  display: flex;
+}
+
+.time-start {
+  width: 36%;
+}
+
+.timestart-date {
+  line-height: 24px;
+  font-size: 13px;
+}
+
+.timestart-point {
+  margin-top: 8px;
+  font-size: 16px;
+  display: flex;
+
+}
+
+.time-long {
+  width: 38%;
+}
+
+.timelong-de {
+  display: flex;
+  flex-direction: row;
+}
+
+.line {
+  width: 20%;
+  height: 1px;
+  margin-top: 12px;
+}
+
+.timelong-text {
+  width: 60%;
+  height: 24px;
+  font-size: 13px;
+  text-align: center;
+  border: 1px solid #E6E6E6;
+  border-radius: 12px;
+  line-height: 24px;
+}
+
+.timelong-con {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.time-end {
+  width: 36%;
+  float: right;
+}
+
+.timeend-date {
+  line-height: 24px;
+  float: right;
+  font-size: 13px;
+  width: 100%;
+  text-align: right;
+}
+
+.timeend-point {
+  float: right;
+  margin-top: 8px;
+  font-size: 16px;
+  display: flex;
+
+}
+
+.payment {
+  margin: 33px 0 0 16px;
+  font-size: 13px;
+
+}
+
+.order-time {
+  margin: 8px 0 0 16px;
+  font-size: 13px;
+}
+
+.poster,.wifiset {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.advert {
+  width: 80%;
+  height: auto;
+  position: relative;
+  border-radius: 10px;
+  background-color: #fff;
+}
+.wifiset .advert{
+    height: auto;
+}
+
+.advert image {
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
+  overflow-y: scroll;
+}
+
+.advert .close-item {
+  width: 50rpx;
+  height: 50rpx;
+  line-height: 44rpx;
+  text-align: center;
+  border-radius: 50%;
+  border: 5rpx solid #000;
+  color: #000;
+  position: absolute;
+  left: 50%;
+  top: -13%;
+  transform: translate(-50%, 0);
+  font-weight: bold;
+}
+.tui-list-box{
+  width: 70%;
+  margin: 20px auto;
+}
+.tui-menu-list{
+  width: 90%;
+  margin: 30px auto;
+  display: table;
+  text-align:center;
+}
+
+.tui-menu-list switch{
+ float: right;
+}
+
+.popup {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 999;
+}
+.content {
+  position: relative;
+  width: 80%;
+  max-width: 500rpx;
+  padding: 20rpx;
+  background-color: #fff;
+  border-radius: 5rpx;
+}
+.close {
+  position: absolute;
+  top: 10rpx;
+  right: 10rpx;
+}

@@ -1,0 +1,13 @@
+var isVote = function(id,array) {
+  if(array){
+    for (var i = 0; i < array.length; i++) {
+        if(array[i]==id){
+          return true
+        }
+    }
+  }
+  return false
+}
+module.exports = {
+  isVote: isVote
+};

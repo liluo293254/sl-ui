@@ -1,0 +1,115 @@
+<view class="container-show-footer " >
+<view class="top">
+  <!-- <view class="nav" style="background: -webkit-linear-gradient(top,{{button_bg_color}},{{button_bg_color}},white);"> -->
+  <view class="nav "  style="background: #439AEA" >
+  </view>
+  <!-- 搜索栏 -->
+  <view class="search "  >
+    <view style="width: 95%;position: absolute;text-align: center;margin-top: -35px;font-size:16px;font-weight: bold;color:#fff;"><text>智感美城</text></view>
+    <view class="locat" catchtap="goPagesLink" data-url="/pages/index/shopcity">
+      <!-- <text>{{address}}</text> -->
+      <text>漳州</text>
+      <icon class="iconfont icon-xiangxia" style="font-size:10px;margin-left:3px;line-height: 6;"></icon>
+    </view>
+    <!-- 一般情况下的搜索框显示 -->
+    <view wx:if="{{!focus}}" class='search-bar white'>
+      <!-- <image class="search_image image16" src='{{host}}/static/images/搜索.png'></image> -->
+      <icon class="iconfont icon-sousuo" style="line-height: 35px;float: left;margin-left: 10px;margin-right: 10px;"></icon>
+      <input type='text' placeholder='输入门店、地点' placeholder-class="center" confirm-type='search' bindfocus="focusHandler" bindinput="searchInput" bindconfirm="searchConfirm" value="{{ selectKeyWord }}"></input>
+      <icon bindtap="wechatScan" class="iconfont icon-saoma" style="line-height: 35px;float: right;right: 10px;position: relative;"></icon>
+    </view>
+    <!-- 获得焦点时的搜索框，多一个取消按钮 -->
+    <view wx:if="{{focus}}" class='search-bar white'>
+      <input class="search_input" type='text' placeholder='输入门店、地点' confirm-type='search' value="{{inputValue}}" bindinput='query'>
+      </input>
+      <image class="search_image image16" src='' bindtap='cancelHandler'></image>
+    </view>
+    <!-- 搜索结果显示框 -->
+    <scroll-view wx:if="{{focus}}" class="scrollview"  >
+      <view wx:for="{{list}}" wx:key="unique">
+        <view class="scrollItem">
+          <text class="font1" space="nbsp">{{item.name}}</text>
+          <text class="font2" space="nbsp">{{item.num}} </text>
+        </view>
+      </view>
+    </scroll-view>
+    <!-- <van-cell bind:click="showPopup" class="cell"> -->
+      <view class="item-right" type="primary"  bindtap="openPopup"  data-index="0">
+        <icon class="iconfont icon-shaixuan1" style="font-size: 20px; margin-top: -10px;"></icon>
+        <text>更多</text>
+      </view>
+    <!-- </van-cell> -->
+  </view>
+</view>
+  <view class="popup" wx:if="{{showIndex=='0'}}" bindtap="closePopup" style="top: 0px;position: fixed;" catchtouchmove="true">
+  <view class="popup-box"style="top: 130px;position: fixed;"></view></view> 
+<view class="info-top" wx:if="{{showIndex=='0'}}" style="overflow-y: scroll;" scroll-y="true" >
+  <view class="select"  >
+      <text style="font-weight: 600;    font-size: 15px;">选择分类</text>
+      <checkbox-group bindchange="serviceValChange" class="selectList">
+        <view class="typeItem">
+          <block wx:for="{{selectList}}" wx:key="item">
+            <view class=" type-text">
+              <label class="type-text  {{item.checked ? 'is_checked':''}}" style="width: 100%; margin: 0px;">
+                <checkbox value="{{item.value}}" checked="{{item.checked}}" hidden="false" >
+                </checkbox>
+                <view class="text1">
+                  <text>{{item.name}}</text>
+                </view>
+              </label>
+            </view>
+          </block>
+        </view>
+      </checkbox-group>
+    </view>
+    <view class="kong"></view>
+    <view class="row-btn">
+      <view class="left-btn" bindtap='closePopup'>重置</view>
+      <view class="right-btn" bindtap='closePopup'>确认</view>
+    </view>
+</view>
+  <!-- 门店 -->
+  <view class="room"  >
+    <!-- <view wx:if="{{showNone == 1}}" style="text-align: center;margin-top: 30px;">
+			<text>暂无门店数据~</text>
+		</view> -->
+    <block wx:for="{{shopList}}" wx:key="unique">
+      <view class="room-right">
+        <view style="width: 100%;float: left;">
+          <view class="room-thumb-item">
+            <image src="{{item.photo}}" mode="aspectFill" class="room-img" bindtap="goRoomList" data-id="{{item.community_id}}" />
+          </view>
+          <view class="room-info-item">
+            <view class="room-text white" bindtap="goRoomList">
+              <text class="color1A title">{{item.name}}</text>
+            </view>
+            <view class="room-icon">
+              <view class="room-time">
+                <text>物业公司：{{item.property}}</text>
+              </view>
+            </view>
+            <view class="room-icon">
+              <view class="room-distance">
+                <text style="color: {{button_bg_color}};border:1px solid">距我当前：{{item.distance}}</text>
+              </view>
+
+            </view>
+            <view class="room-icon">
+              <view class="icon-bg" style="color: #000;">
+                <icon class="iconfont icon-daohangdizhiweizhi" bindtap="goMap" data-lat="{{item.lat}}" data-lng="{{item.lng}}" data-addr="{{item.addr}}" data-name="{{item.name}}"><text>导航</text></icon>
+              </view>
+              <view class="icon-bg" style="color:#000;">
+                <icon class="iconfont icon-24gf-telephone" bindtap="makeCall" data-tel="{{item.tel}}"><text>电话</text></icon>
+              </view>
+              <text class="icon-button" style="background-color: {{button_bg_color}};color:{{button_font_color}};" bindtap="goRoomList" data-id="{{item.community_id}}">进入小区</text>
+            </view>
+          </view>
+        </view>
+        <view class="white room-addr" bindtap="goMap" data-lat="{{item.lat}}" data-lng="{{item.lng}}" data-addr="{{item.addr}}" data-name="{{item.name}}">
+          <icon class="iconfont icon-zuobiaofill des"></icon>
+          <text class="des">{{item.addr}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

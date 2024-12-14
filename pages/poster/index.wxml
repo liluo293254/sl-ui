@@ -1,0 +1,14 @@
+<view class="wx-dialog_wrapper">
+  <view class="wx-dialog wx-dialogwidth100">
+    <view class="wx-dialog_body" style="width:90%;border-radius:10px;margin: auto;">
+      <view class="canvasWrap"><canvas type="2d" id='posterCanvas' style="width: 100%;height: {{canvasHeight}};"></canvas></view>
+    </view>
+  </view>
+</view>
+<view class="form-group">
+  <view class="form-field form-button">
+    <button class="button" style="color: {{button_bg_color}};border: 1px solid;background:#fff;"  bindtap="saveImg" wx:if="{{user_id > 0}}" data-url="{{qrcode}}">保存二维码</button>
+    <button class="button" style="background: {{button_bg_color}};color: {{button_font_color}};"  bindtap="saveImg" wx:if="{{user_id > 0}}">保存海报</button>
+    <button class="button" style="background: {{button_bg_color}};color: {{button_font_color}};"  bindtap="wechatAuth" wx:else="">去登录</button>
+  </view>
+</view>

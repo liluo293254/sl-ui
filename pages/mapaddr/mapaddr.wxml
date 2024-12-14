@@ -1,0 +1,65 @@
+<view class="container">
+  <view class="page-body">
+    <form bindsubmit='addshop'>   
+      <view style="width:100%;height:20rpx;"></view>
+      <text style="color:red;margin-left:20rpx;">请填写您的店铺信息</text>
+      <view class="item"> 
+          <view class="item-title">商户名称：</view>
+          <view class="weui-cell__bd" >
+            <input class="weui-input" name="shop_name" placeholder="输入商户名称" />
+          </view> 
+      </view>
+
+      <view class="item"> 
+          <view class="item-title">联系方式：</view>
+          <view class="weui-cell__bd"  >
+            <input class="weui-input" name="mobile" type="number" maxlength="11" placeholder="输入手机号" />
+          </view> 
+      </view>
+
+      <view class="item"> 
+          <view class="item-title lxr">联 系 人：</view>
+          <view class="weui-cell__bd"  >
+            <input class="weui-input" name="contact" placeholder="输入联系人姓名" />
+          </view> 
+      </view>
+      <view class="bg10"></view>
+
+<!-- <view class="item" bindtap="getaddr"> 
+    <view class="item-title">地图坐标：</view>
+    <view class="weui-cell__bd"  >
+      <input class="hidden" name="lng" value="{{lng}}" />
+      <input  class="hidden" name="lat"  value="{{lat}}" />
+      <input class="weui-input" value="{{lat_lng}}" placeholder="点击获取位置" disabled="true"  />
+    </view> 
+</view> -->
+
+      <view class="item section">
+        <view class="section__title item-title">所在地区：</view>
+        <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+          <input type="text" class="hidden" name="city" value="{{region[0]}}" />
+            <input  type="text" class="hidden" name="area" value="{{region[1]}}" />
+            <input  type="text" class="hidden" name="business" value="{{region[2]}}" />
+          <view class="picker">
+            {{region[0]}}　{{region[1]}}　{{region[2]}}
+          </view>
+        </picker>
+      </view>
+
+      <view class="item"> 
+          <view class="item-title">详细地址：</view>
+          <view class="weui-cell__bd"  >
+            <input class="weui-input" name="addr" value="{{addr}}" placeholder="" />
+          </view> 
+      </view>
+
+   
+      <view class="bg10"></view>
+      <view class="btn-area">
+        <button wx:if="{{user_id}}" style="margin: 30rpx auto;background:{{button_bg_color}};color:{{button_font_color}};width:90%;border-radius: 50px;font-weight: 400;" type="primary" formType="submit">确认入驻</button> 
+        <button wx:else="" style="margin: 30rpx auto;background:{{button_bg_color}};color:{{button_font_color}};width:90%;border-radius: 50px;font-weight: 400;" bindtap="wechatAuth">请先登录</button> 
+      </view>
+      <view style="text-decoration: underline;color: {{button_bg_color}};color:{{button_font_color}};text-align: center;font-weight: 400;" bindtap="makeCall" data-tel="{{site_mobile}}"><icon class="iconfont icon-service-fill" style="font-weight: 600;"></icon><text>欢迎点击热线咨询</text></view>
+    </form>
+  </view> 
+</view>

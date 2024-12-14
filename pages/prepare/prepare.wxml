@@ -1,0 +1,95 @@
+<view class="custom-navbar">
+  <view class="custom-navimage">
+    <image src="{{meituan_pic}}"></image>
+    <image src="{{dazhong_pic}}"></image>
+    <image src="{{douyin_pic}}"></image>
+  </view>
+  <view class="custom-navtitle">美团、大众点评、抖音自助核销验券</view> 
+</view>  
+
+
+<form bindsubmit='bindsubmit'>
+
+<view class="bind-form">
+    <view class="form-group">
+        <view class="section__title" style="margin:0 0 24rpx 6rpx;font-weight: bold;">平台</view>
+        <view class="form-field form-radio" style="position:relative;">
+            <radio-group class="radio-group" name="type" bindchange="radioChange">
+                <radio class="radio" value="1" checked="{{app_type==1}}">
+                    <text>美团</text>
+                </radio>
+                <radio class="radio" value="2" checked="{{app_type==2}}">
+                    <text>抖音</text>
+                </radio>
+            </radio-group>
+        </view>
+    </view>
+    <view class="form-group" hidden="{{app_type==2}}">
+      <view class="section__title" style="margin:0 0 24rpx 6rpx;font-weight: bold;">券号</view>
+      <view class="form-field form-input" style="position:relative;">
+        <input name="code" value="{{code}}" class="input" placeholder="请输入美团大众券号" />
+        <view style="position: absolute;width: 100rpx; height:100%;top:0;right:0;z-index:1;">
+          <image bindtap="handleScanCode" style="width: 40rpx; height:40rpx;margin:18rpx 0 0 42rpx;"  src="/img/sys.png"></image>
+        </view>
+      </view>
+    </view>  
+
+    <view class="form-group section" hidden="{{app_type==2}}">
+      <view class="section__title" style="margin:0 0 24rpx 6rpx;font-weight: bold;">门店</view>
+    
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{shop_name}}">       
+        <view class="form-field form-input">
+        <input name="shop_name"  disabled="true" class="input"  placeholder="请选择门店" value="{{shop_name[index]}}" />
+      </view>
+      </picker>
+    </view>
+    <view class="form-group" hidden="{{app_type==1}}">
+      <view class="section__title" style="margin:0 0 24rpx 6rpx;font-weight: bold;">券号</view>
+      <view class="form-field form-input" style="position:relative;">
+        <input name="object_id" maxlength="-1" value="{{object_id}}" class="input" style="padding-right: 40rpx;" placeholder="请输入抖音券号" />
+        <view style="position: absolute;width: 100rpx; height:100%;top:0;right:0;z-index:1;">
+          <image bindtap="handleScanCode" style="width: 40rpx; height:40rpx;margin:18rpx 0 0 42rpx;"  src="/img/sys.png"></image>
+        </view>
+      </view>
+    </view>  
+
+    <view class="form-group section" hidden="{{app_type==1}}">
+      <view class="section__title" style="margin:0 0 24rpx 6rpx;font-weight: bold;">门店</view>
+    
+      <picker bindchange="bindPickerChangeDouyin" value="{{douyin_index}}" range="{{douyin_shop_name}}">       
+        <view class="form-field form-input">
+        <input name="douyin_shop_name"  disabled="true" class="input"  placeholder="请选择门店" value="{{douyin_shop_name[douyin_index]}}" />
+      </view>
+      </picker>
+    </view>
+  
+    <view class="form-group">
+      <view class="form-field form-button">
+        <button class="button" style="background: {{button_bg_color}};color: {{button_font_color}};" type="primary"  formType="submit" wx:if="{{user_id > 0}}">确定</button>
+        <button class="button" style="background: {{button_bg_color}};color: {{button_font_color}};" type="primary"  bindtap="wechatAuth" wx:else="">去登录</button>
+      </view>
+    </view>
+    <view class="form-group" style="text-align: center;">
+      <text class="text-normal" style="margin-top: 10rpx;margin-right:40rpx;color:#666;text-decoration: underline;" bindtap="QA_link" data-show="{{meituan_verity_guide}}">核销方式</text>
+      <text class="text-normal" style="margin-top: 10rpx;margin-left:40rpx;color:#666;text-decoration: underline;" bindtap="QA_link" data-show="{{meituan_use_guide}}">使用方法</text>
+    </view>
+</view>
+</form>
+
+<view class="poster" wx:if="{{mask_show}}">
+  <view class="advert">
+    <view bindtap="mask_close">×</view>
+    <image
+      src="{{mask_show}}" mode="widthFix">
+    </image>
+  </view>
+</view>
+
+<view class="foot-fixed">
+  <block wx:for="{{nav_list}}" wx:key="unique">
+    <navigator  id="navIndex" open-type="redirect"  style="width:{{foot_width}}" class="foot-item " url="{{item.url}}">
+        <view class="foot-icon" style="background: url({{item.photo}}) center center no-repeat; background-size: contain;"></view>                    
+        <text class="foot-label" id="navIndexLabel">{{item.nav_name}}</text>
+    </navigator >
+    </block>
+</view>

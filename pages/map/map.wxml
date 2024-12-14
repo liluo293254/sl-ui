@@ -1,0 +1,116 @@
+<view class="custom-navbar" style="padding-top:{{ navBarDetail.top }}px; padding-right: {{ navBarDetail.right }}px; height:{{ navBarDetail.height }}px;background-color: {{button_bg_color}};">
+  <view class="custom-navback" bindtap="linkBack"></view>
+  <view class="custom-navtitle" style="color: {{button_font_color}};">附近商家</view>
+  <!-- <view class="custom-navicon" bindtap="linkWebView" data-link="shopList"> -->
+  <!-- 列 表 -->
+  <!-- <text>列表</text> -->
+    <!-- <view class="icon"></view> -->
+  <!-- </view> -->
+</view> 
+
+  <!-- 搜索框 -->
+<view class="header" style="top:{{ navBarDetail.height }}px;">
+    <view class="header-search">
+      <!-- <view class="search-type" bindtap="selectToggle" data-id="1">{{ selectLeft[selectLeftIndex].name }}</view> -->
+      <view class="search-input">
+        <input class="input" type="text" placeholder-class="input-place" confirm-type="search" placeholder="请输入关键词搜索" bindinput="searchInput" bindconfirm="searchConfirm" value="{{ selectLeftKeyWord }}" />
+      </view>
+    </view>
+    <!-- <view class="header-type-select" bindtap="selectToggle" data-id="2"> -->
+      <!-- <view class="header-type-select" bindtap="linkWebView" data-link="shopList">
+      <view class="select-icon"></view>
+    </view> -->
+  </view>
+<!-- 搜索框end -->
+<!-- 地图
+ -->
+<map  
+  scale="13" 
+  show-location="true"  
+  markers="{{ mapMarker }}" 
+  longitude="{{ userlng }}" 
+  latitude="{{ userlat }}"
+  bindmarkertap="handleMapCallout"   
+  bindcallouttap="handleMapCallout"   
+style="position: fixed; top:{{ navBarDetail.height+45 }}px; width:{{ safeArea.width }}px; height:{{ safeArea.height - safeArea.top }}px;">
+</map>
+ 
+    <!-- <view class="header-type-select" bindtap="selectToggle" data-id="2">
+      <view class="select-icon">
+        <image src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAAmCAYAAABZNrIjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4RpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ1IDc5LjE2MzQ5OSwgMjAxOC8wOC8xMy0xNjo0MDoyMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpmYTZiZDA5NS1kMmIwLWFhNDYtYjkwMC0yNGU3MGQ3ZTQ4NzgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RENCQTg2QzY2MjlEMTFFQkFCNjVGNDE5NEQ2MUYzMEEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RENCQTg2QzU2MjlEMTFFQkFCNjVGNDE5NEQ2MUYzMEEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTkgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NDdiMzA0ZGItOGY0YS00OTQ1LWFkNWItYzIyY2Q4Nzg1NDY5IiBzdFJlZjpkb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6YTI0NDQ3MDQtNDRiNy01NTQ3LTlhYTUtNTA4ZmJjZTZjZWE3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+oo/7AQAAAutJREFUeNrsmD9oFEEUxm9NTCJ3iP8SBKP2FxHRYKGINoognApRQWxUSGGKA8FAkGChIkl3iHYx2oiioDm0EkQRbTzFQtOKShqNEiQh7iVx/R58C8MwuzNL4pLTe/BjYWdm59v3Zt6bXS8IgsxityWZGrCaENloulkoFER8F9gGmmPGz4BRcBv4Mf0awC7QCVaAcfASVMrlsnW9efqapMAyOJDgZd+C3WDS0HYMDICNhrb3oAihT5OGu4sCb4F2sDKGteAK2ArOGJ51GdxhNHrBFrAObGfbBvAEjulO6skBPrAdbzhmcyH6Syin6P2jStNJcAM8A4fBhGG4iHwM8mBvlEdNngzX4JRjqOfAL9Ck3MsxxB/BwQiBYp8ZNVkmJbywl+bulolbwSXwM64jvCdCr4JN3FipidzJ64hj/xFtXCoi1zAlfXfsP6aMS03kBNd2zrF/qzIuNZEVXvc79t+njUtF5ENmh35t15tSmFSgs+ATeOEqckZLRdaqRSGzyr0f4CLYDIZihC4HD1gUzmGnz7mKHOW1yEQd5wWPSXsZ+KA1D4K74AR4zUoWrtHV4BR4B/ZI9YHAe0kqjnjwFUudz0QdZU0U+IU57qvBy70Me5b3fCVK36QdAm8mKosUmmMt7rSsqVl68JpBoGqrwCHDKegRBFormzffkzleaF7jIfLfOPT+zXC3gR7QEXW4plWZH6/Dq5Npbpw2TrweTFNIlLVwI8nBeQeE+i6fD8cpUA6z/VG5S0tBQ/TaBTb1UOBpMAwCy6eF5NQ+zj3ssibzvJbiBHLRB3zoNMMaWgfv2QRmOEdJm9sqcqmSz1wsYDgbtQhVbQIV87W569/ddZF1kf+tyDAdZB2f0cCqUdVKXQvbXCwbl/ZMFedN+IsEFeW85SeBlLMirxXtG+cIK0kpLudijix/uahzp/LDSg4oz1leXU1+txRQgX67noIW4tdfM2txPqqSKCEWD943CVyQQ299d9eSyD8CDABoOfNnLiA8/AAAAABJRU5ErkJggg=="></image>
+      </view>
+    </view>  -->
+
+<!-- 搜索 -->
+<!-- <view class="header">
+    <view class="header-search">
+      <view class="search-type" bindtap="selectToggle" data-id="1">{{ selectLeft[selectLeftIndex].name }}
+        <image src="data:image/png;base64,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"></image>
+      </view>
+      <view class="search-input">
+        <image  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACXUlEQVRYR82X3XHaQBCAdwHpNU4FwRUkriDwoLvhyaSC4A6SCgwVxB0EVxB4Yu54AFcQOoipIPAKc9rMMifmfBY6yR6j7AwP4sTtt/8LQs2CNeuHUgCz2azdbDaviaiDiG0A+GTBV0T0iIhLY8y01+s9VjWoEMAqvgWAQcmLx8aYURWQkwBKqT4i/gSAC0/5g/f82XveENGNlHJSBjoXQGvNFrPyTNYAMIyiaNLtdjfuxYvF4mK/3/f5HAA+OGc3QohxCOIZgLX8V/ZDIhpJKfnyoCilhojIITsIEX0JeeIJgI35b8ftpaxwyTzvbYwxV0U58QRAKTVGxK+WvrTlvmtcTxDRvZTyZBIfAaz1f+xlayEEl9uLRWvNJXnICWPM5SkvHAHm8/k3IvphNVZ2vU/qhgIRvydJcpdnzRFAKTVBxGt+KYqi9362V3WFrY6/NpxTKSVXyjNxAVaI+BEAHoQQnaoK897XWi8BgPvESghxVQigtSb7wlsAgBAit+ccv6wdQCn1liE4WVX/TxLWXoZuI+IZL6W8fE0lVG5ErKzWVswA1gsrAHj30o7oDaNtFEXtoqYWHMeIOEySZFQmHP44BgDeHbpCCDYqV0otJJwTvHDEcTzNW0h2ux23cN4F8gZYIURoJeONJgtHZgG3V1f8tr1GxEGapoNstBd5IriUNhoNtuywIwRkS0R37vbkJvUpiNJreavV6qdpyta27dDa8pDJPsaYZd7MD0GUAgiZHjovgjgLgN9j3HCcDSAH4jD2zwqQQfBfuziOO1zSZwdgCF7Xsn5SC4CbtP8AD0ZhMN8+0hcAAAAASUVORK5CYII="></image>        <input class="input" type="text" placeholder-class="input-place" confirm-type="search" placeholder="请输入关键词搜索" bindinput="searchInput" bindconfirm="searchConfirm" value="{{ selectLeftKeyWord }}" />
+      </view>
+    </view>
+    <view class="header-type-select" bindtap="selectToggle" data-id="2">
+      <view class="select-icon">
+        <image src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAAmCAYAAABZNrIjAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4RpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ1IDc5LjE2MzQ5OSwgMjAxOC8wOC8xMy0xNjo0MDoyMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpmYTZiZDA5NS1kMmIwLWFhNDYtYjkwMC0yNGU3MGQ3ZTQ4NzgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RENCQTg2QzY2MjlEMTFFQkFCNjVGNDE5NEQ2MUYzMEEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RENCQTg2QzU2MjlEMTFFQkFCNjVGNDE5NEQ2MUYzMEEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTkgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NDdiMzA0ZGItOGY0YS00OTQ1LWFkNWItYzIyY2Q4Nzg1NDY5IiBzdFJlZjpkb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6YTI0NDQ3MDQtNDRiNy01NTQ3LTlhYTUtNTA4ZmJjZTZjZWE3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+oo/7AQAAAutJREFUeNrsmD9oFEEUxm9NTCJ3iP8SBKP2FxHRYKGINoognApRQWxUSGGKA8FAkGChIkl3iHYx2oiioDm0EkQRbTzFQtOKShqNEiQh7iVx/R58C8MwuzNL4pLTe/BjYWdm59v3Zt6bXS8IgsxityWZGrCaENloulkoFER8F9gGmmPGz4BRcBv4Mf0awC7QCVaAcfASVMrlsnW9efqapMAyOJDgZd+C3WDS0HYMDICNhrb3oAihT5OGu4sCb4F2sDKGteAK2ArOGJ51GdxhNHrBFrAObGfbBvAEjulO6skBPrAdbzhmcyH6Syin6P2jStNJcAM8A4fBhGG4iHwM8mBvlEdNngzX4JRjqOfAL9Ck3MsxxB/BwQiBYp8ZNVkmJbywl+bulolbwSXwM64jvCdCr4JN3FipidzJ64hj/xFtXCoi1zAlfXfsP6aMS03kBNd2zrF/qzIuNZEVXvc79t+njUtF5ENmh35t15tSmFSgs+ATeOEqckZLRdaqRSGzyr0f4CLYDIZihC4HD1gUzmGnz7mKHOW1yEQd5wWPSXsZ+KA1D4K74AR4zUoWrtHV4BR4B/ZI9YHAe0kqjnjwFUudz0QdZU0U+IU57qvBy70Me5b3fCVK36QdAm8mKosUmmMt7rSsqVl68JpBoGqrwCHDKegRBFormzffkzleaF7jIfLfOPT+zXC3gR7QEXW4plWZH6/Dq5Npbpw2TrweTFNIlLVwI8nBeQeE+i6fD8cpUA6z/VG5S0tBQ/TaBTb1UOBpMAwCy6eF5NQ+zj3ssibzvJbiBHLRB3zoNMMaWgfv2QRmOEdJm9sqcqmSz1wsYDgbtQhVbQIV87W569/ddZF1kf+tyDAdZB2f0cCqUdVKXQvbXCwbl/ZMFedN+IsEFeW85SeBlLMirxXtG+cIK0kpLudijix/uahzp/LDSg4oz1leXU1+txRQgX67noIW4tdfM2txPqqSKCEWD943CVyQQ299d9eSyD8CDABoOfNnLiA8/AAAAABJRU5ErkJggg=="></image>
+      </view>
+    </view>
+  </view> -->
+  <!-- 搜索end -->
+  <!-- 卡片 -->
+  <view class="shop-wrapper" hidden="{{hidden}}">
+    <view style="width: 100%;float: left;">
+    <view class="shop-img room-thumb-item" bindtap="linkWebView" data-link="{{ mapList[mapMarkerId].shop_id ? 'shopDetail' : 'typeDetail' }}">
+      <image class="room-img" src="{{ mapList[mapMarkerId].photo }}"></image>
+      <text class="image-tag" wx:if="{{mapList[mapMarkerId].closed == 0}}">营业中</text>
+      <text class="image-tag red" wx:else="">即将开业</text>
+    </view>
+    <view class="shop-detail room-info-item">
+      <view class="room-text">
+        <view bindtap="linkWebView" data-link="{{ mapList[mapMarkerId].shop_id ? 'shopDetail' : 'typeDetail' }}">
+          <view class="text-hidden title">{{ mapList[mapMarkerId].shop_name }}</view>
+        </view>
+        <view style="align-items: center; margin: 10rpx 0 0;" bindtap="linkWebView" data-link="{{ mapList[mapMarkerId].shop_id ? 'shopDetail' : 'typeDetail' }}">
+          <view class="detail-text text-hidden">营业时间：{{ mapList[mapMarkerId].business_time }}</view>
+        </view>
+        <view class="room-icon">
+          <view class="room-distance">
+          <text style="color: {{button_bg_color}};border:1px solid">距我当前：{{mapList[mapMarkerId].distance}}</text>
+        </view>
+      </view>
+        <view class="room-icon">
+          <view class="icon-bg" style="color: #000;">
+          <icon class="iconfont icon-daohangdizhiweizhi" bindtap="openNavigation" data-lat="{{mapList[mapMarkerId].lat}}" data-lng="{{mapList[mapMarkerId].lng}}" data-addr="{{mapList[mapMarkerId].addr}}" data-name="{{mapList[mapMarkerId].shop_name}}"><text>导航</text></icon>
+        </view>
+        <view class="icon-bg" style="color:#000;">
+          <icon class="iconfont icon-24gf-telephone" bindtap="makeCall" data-tel="{{mapList[mapMarkerId].mobile}}"><text>电话</text></icon>
+        </view>
+        <text bindtap="linkWebView" data-link="{{ mapList[mapMarkerId].shop_id ? 'shopDetail' : 'typeDetail' }}" class="icon-button" style="background-color: {{button_bg_color}};color:{{button_font_color}};" data-id="{{mapList[mapMarkerId].shop_id}}">前往预订</text>
+        </view>
+      
+      <!-- <view>
+        <view class="inline-block detail-type" bindtap="linkWebView" data-link="shopMall" hidden="{{ mapList[mapMarkerId].is_open_mall == '0' }}">在线商城</view>
+        <view class="inline-block detail-type" bindtap="linkWebView" data-link="shopWorker" hidden="{{ mapList[mapMarkerId].is_open_service == '0'}}">服务预约</view>
+        <view class="inline-block detail-type" bindtap="linkWebView" data-link="shopBooking" hidden="{{ mapList[mapMarkerId].is_open_booking == '0' }}">共享空间</view>
+      </view> -->
+    </view>
+  </view>
+  </view>
+  <view class="white room-addr"  bindtap="openNavigation" data-lat="{{mapList[mapMarkerId].lat}}" data-lng="{{mapList[mapMarkerId].lng}}" data-addr="{{mapList[mapMarkerId].addr}}" data-name="{{mapList[mapMarkerId].shop_name}}" >
+    <icon class="iconfont icon-zuobiaofill des"></icon>
+    <text class="des">{{mapList[mapMarkerId].addr}}</text>
+  </view>
+    <!-- <view class="shop-navigation" bindtap="openNavigation">
+      <image src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABCCAYAAADnodDVAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4RpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQ1IDc5LjE2MzQ5OSwgMjAxOC8wOC8xMy0xNjo0MDoyMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpmYTZiZDA5NS1kMmIwLWFhNDYtYjkwMC0yNGU3MGQ3ZTQ4NzgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QjlDRTE3N0Y2MUY5MTFFQjg5QzJBNjM4RkIzMDIzODUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QjlDRTE3N0U2MUY5MTFFQjg5QzJBNjM4RkIzMDIzODUiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTkgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6ODFjZjk1ZGMtODgxNS1jZDQxLTliZTQtMTE3ODIwYTc4NDkzIiBzdFJlZjpkb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6YTI0NDQ3MDQtNDRiNy01NTQ3LTlhYTUt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"></image>
+    </view> -->
+  </view>
+  <!-- 卡片end -->
+
+<view class="select-wrapper" bindtap="selectToggle" hidden="{{ isSelect }}" data-id="">
+  <view class="inline-block select-group">
+    <block wx:for="{{ selectId === '1' ? selectLeft : selectRight }}" wx:key="index">
+      <view class="select-field" data-type="{{ item.type }}" data-index="{{ index }}" bindtap="selectItem">{{ item.name }}</view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,85 @@
+<privacy-dialog />
+<view class="container-show-footer">
+  <!-- 搜索栏 -->
+  <view class="search">
+      <view class="locat color3" catchtap="goPagesLink" data-url="/pages/index/shopcity">
+        <text>{{address}}</text>
+        <!-- <image src="{{host}}/static/images/向下.png" mode="widthFix"  class="image16"/> -->
+        <icon class="iconfont icon-102fangxiang_xiangxia" style="font-size:12px;margin-left:3px;line-height: 6;"></icon>
+      </view>
+      <!-- 一般情况下的搜索框显示 -->
+      <view wx:if="{{!focus}}" class='search-bar white'>
+        <!-- <image class="search_image image16" src='{{host}}/static/images/搜索.png'></image> -->
+        <icon class="iconfont icon-sousuo" style="line-height: 35px;float: left;margin-left: 10px;margin-right: 10px;"></icon>
+        <input type='text' placeholder='输入门店、地点' placeholder-class="center" confirm-type='search' bindfocus="focusHandler" bindinput="searchInput" bindconfirm="searchConfirm" value="{{ selectKeyWord }}"></input>
+        <icon bindtap="wechatScan" class="iconfont icon-saoma" style="line-height: 35px;float: right;right: 10px;position: relative;"></icon>
+      </view>
+      <!-- 获得焦点时的搜索框，多一个取消按钮 -->
+      <view wx:if="{{focus}}" class='search-bar white'>
+        <input class="search_input" type='text' placeholder='输入门店、地点' confirm-type='search' value="{{inputValue}}" bindinput='query'>
+        </input>
+        <image class="search_image image16" src='' bindtap='cancelHandler'></image>
+      </view>
+      <!-- 搜索结果显示框 -->
+      <scroll-view wx:if="{{focus}}" class="scrollview" scroll-y="true">
+        <view wx:for="{{list}}" wx:key="unique">
+          <view class="scrollItem">
+            <text class="font1" space="nbsp">{{item.name}}</text>
+            <text class="font2" space="nbsp">{{item.num}} </text>
+          </view>
+        </view>
+      </scroll-view>
+      <!-- <image src="{{host}}/static/images/地图.png" mode="widthFix" catchtap="goPagesLink" data-url="/pages/map/map" class="map image24" /> -->
+      <!-- <view class="item-right" catchtap="goPagesLink" data-url="/pages/map/map">
+        <icon class="iconfont icon-zuobiao" style="font-size: 18px; margin-top: -10px;"></icon>
+        <text>地图</text>
+      </view> -->
+  </view>
+ 
+  <!-- 门店 -->
+  <view class="room">
+    <view wx:if="{{showNone == 1}}" style="text-align: center;margin-top: 30px;">
+      <text>暂无门店数据~</text>
+    </view>
+    <block wx:for="{{shopList}}" wx:key="unique">
+    <!-- 左 -->
+    <view class="room-right">
+        <view style="width: 100%;float: left;">
+        <view class="room-thumb-item">
+            <image src="{{item.photo}}" mode="aspectFill" class="room-img"  bindtap="goRoomList" data-id="{{item.community_id}}" data-url="" />
+        </view>
+        <view class="room-info-item">
+            <view class="room-text white" bindtap="goRoomList" data-id="{{item.community_id}}" data-url="">
+            <text class="color1A title">{{item.name}}</text>
+            </view>
+            <view class="room-icon">
+            <view class="room-time">
+            <text>物业公司：{{item.property}}</text>
+            </view>
+            </view>
+            <view class="room-icon">
+            <view class="room-distance">
+                <text style="color: {{button_bg_color}};border:1px solid">距我当前：{{item.distance}}</text>
+            </view>
+            </view>
+            <view class="room-icon">
+            <view class="icon-bg" style="color: #000;">
+                <icon class="iconfont icon-daohangdizhiweizhi" bindtap="goMap" data-lat="{{item.lat}}" data-lng="{{item.lng}}" data-addr="{{item.addr}}" data-name="{{item.name}}"><text>导航</text></icon>
+            </view>
+            <view class="icon-bg" style="color:#000;">
+                <icon class="iconfont icon-24gf-telephone" bindtap="makeCall" data-tel="{{item.tel}}"><text>电话</text></icon>
+            </view>
+            <text class="icon-button" style="background-color: {{list_button_bg_color}};color:{{button_font_color}};height: 50rpx;line-height: 50rpx;font-size: 28rpx;margin: 4rpx 0 0;" bindtap="goRoomList" data-id="{{item.community_id}}" data-url="">进入小区</text>
+            </view>
+        </view>
+        </view>
+        <view class="white room-addr"  bindtap="goMap" data-lat="{{item.lat}}" data-lng="{{item.lng}}" data-addr="{{item.addr}}" data-name="{{item.name}}" >
+            <icon class="iconfont icon-zuobiaofill des"></icon>
+            <text class="des">{{item.addr}}</text>
+        </view>
+        </view>
+    </block>
+  </view>
+</view>
+<import src="../public/footer.wxml"/>
+<template is="footer-nav" data="{{nav_list:nav_list,foot_width:foot_width}}"></template>

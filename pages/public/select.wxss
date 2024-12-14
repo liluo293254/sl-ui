@@ -1,0 +1,69 @@
+/* pages/select/select.wxss */
+.com-selectBox{
+  width:95%;
+}
+.com-sContent{
+  font-size: 16px;
+  position: relative;
+  height: 30px;
+  line-height: 30px;
+}
+.com-sImg{
+  position: absolute;
+  right: 10px;
+  top: 11px;
+  width: 16px;
+  height: 9px;
+  transition: all .3s ease;
+}
+.com-sTxt{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding:0 20px 0 6px;
+  font-size: 14px;
+}
+.nav-hover .com-sTxt{
+  position: relative;
+}
+.nav-hover .com-sTxt::after {
+  content: " ";
+  width: 30%;
+  height: 4px;
+  background: #D3BA77;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10px;
+}
+.com-sList{
+  width: 42%;
+  position: absolute;
+  border-top: none;
+  box-sizing: border-box;
+  z-index: 3;
+  max-height: 245px;
+  overflow: auto;
+  background-color: white;
+  color: grey;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px;
+  
+}
+.com-sItem{
+  height: 20%;
+  line-height: 40px;
+  padding: 0 6px;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+}
+.com-sItem:first-child{
+  border-top: none;
+}

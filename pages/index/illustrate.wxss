@@ -1,0 +1,16 @@
+/* pages/index/illustrate.wxss */
+.wrapper{
+    background-color: #fff;
+    width: 95%;
+    margin: 10px auto 20px !important;
+    border-radius: 10px;
+    padding: 10px 10px 20px;
+  }
+  
+  .title{
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    width: 90%;
+    margin: 10px auto;
+  }

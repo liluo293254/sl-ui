@@ -1,0 +1,56 @@
+<view class="container-show-footer">
+<!-- <view > 
+    <navigator url="{{link_url}}"> 
+        <image style="width: 100%; height: 350rpx;"  src="{{ad}}"></image>
+    </navigator>
+</view> -->
+
+<view wx:if="{{wxkf_qrcode}}" style="width:400rpx;height:400rpx;margin:40px auto 20px"> 
+  <image style="width:100%;height:100%;"  src="{{host}}{{wxkf_qrcode}}" data-url="{{host}}{{wxkf_qrcode}}" bindlongpress="onLongPress"></image>
+</view>
+<view wx:else style="width:400rpx;height:400rpx;margin:40px auto 20px"> 
+  <image style="width:100%;height:100%;"  src="{{host}}{{img}}" data-url="{{host}}{{img}}" bindlongpress="onLongPress"></image>
+</view>
+<view style="width:100%;margin:20px auto 40px;text-align: center;">
+  <block wx:if="{{wx_numb}}">
+    <text>客服微信：<text style="font-size: 18px;font-weight: 600;">{{wx_numb}}</text>
+    <text bindtap="copyText" data-text="{{wx_numb}}" style="color: #999;padding: 0px 5px;margin-left: 10px;font-size: 12px; border-radius: 5px;text-decoration: underline;">复制</text>
+    </text>
+    
+    </block>
+</view>
+<view style="width:100%;overflow: hidden;">
+    <button bindtap="tapName" style="width:40%;background: {{button_bg_color}};color: {{button_font_color}};margin-left:8%;border-radius: 50rpx;float: left;">
+      <view class='iconfont icon-kefu'></view>
+      <view>在线咨询</view>
+    </button>
+    <button bindtap="makeCall" data-tel="{{mobile}}" style="width:40%;margin-right:8%;background:  {{button_bg_color}};color: {{button_font_color}};border-radius: 50rpx;float: right;">
+      <view class='iconfont icon-kefu'></view>
+      <view>在线电联</view>
+    </button>
+</view>    
+<view style="width:100%;position: relative;">
+    <button style="width:84%;background:#fff;color:black;box-shadow:0 0 10px 0 #ccc;border-radius: 50rpx;">
+      <view class='iconfont icon-kefu'></view>
+      <navigator id="navIndex" open-type="redirect"  class="foot-item " url="/pages/index/index">返回首页</navigator>
+  </button>
+</view>
+
+
+
+<!-- <view class="foot-fixed">
+  <block wx:for="{{nav_list}}" wx:key="unique">
+    <navigator  id="navIndex"  style="width:{{foot_width}}" class="foot-item " url="{{item.url}}">
+        <view class="foot-icon" style="background: url({{item.photo}}) center center no-repeat; background-size: contain;"></view>                    
+        <text class="foot-label" id="navIndexLabel">{{item.nav_name}}</text>
+    </navigator >
+    </block>
+</view> -->
+
+</view>
+
+<import src="../public/footer.wxml"/>
+<template is="footer-nav" data="{{nav_list:nav_list,foot_width:foot_width}}"></template>
+
+
+ 

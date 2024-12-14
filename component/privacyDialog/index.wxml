@@ -1,0 +1,16 @@
+<view class="privacy-dialog {{visible ? 'active' : ''}}">
+  <view class="privacy-back {{visible ? 'active' : ''}}"></view>
+  <view class="privacy-container {{visible ? 'active' : ''}} {{useSafeArea ? 'change' : ''}}">
+    <view class="privacy-info">
+        <image src="{{mini_logo}}" mode="widthFix" class="privacy-logo" />
+        <text class="privacy-name">{{mini_name}}</text>
+    </view>
+    <!-- <view class="privacy-text">在您使用【{{mini_name}}】服务之前，请仔细阅读<text bindtap="openPrivacyContract">《{{mini_name}}隐私保护指引》</text>。如您同意，《{{mini_name}}隐私保护指引》，请点击“同意”开始使用【{{mini_name}}】</view> -->
+    <view class="privacy-text">尊敬的用户，欢迎使用“{{mini_name}}”，我们非常注重您的个人隐私，为了更好地保护您的个人信息，在您使用产品服务前，请仔细阅读<text bindtap="openPrivacyContract">《{{mini_name}}隐私保护政策》</text>和<text bindtap="openUserAgreementConfig">《用户协议》</text>，需要您同意我们收集、使用和保护您的个人信息，我们将严格遵守相关法律法规、监管政策，保护您的个人信息安全。如您同意此政策，请点击“同意”并开始使用我们的产品，如您不同意，我们将无法进一步为您提供服务。</view>
+    <!-- 尊敬的用户，欢迎使用“xxx”，我们非常注重您的个人隐私，为了更好地保护您的个人信息，在您使用产品服务前，请仔细阅读《xxxx》和《服务使用协议》，需要您同意我们收集、使用和保护您的个人信息，我们将严格遵守相关法律法规、监管政策，保护您的个人信息安全。如您同意此政策，请点击“同意”并开始使用我们的产品和服务，如您不同意，我们将无法进一步为您提供服务。 -->
+    <view class="privacy-btns">
+        <button id="disagree-btn" class="privacy-cancel-btn" bindtap="handleDisagree">不同意并退出</button>
+        <button id="agree-btn" open-type="agreePrivacyAuthorization" class="privacy-confirm-btn" bindagreeprivacyauthorization="handleAgree">同意并继续</button>
+    </view>
+  </view>
+</view>

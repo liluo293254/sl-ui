@@ -1,0 +1,60 @@
+<view class="container">
+  <view wx:if="{{ listWifi.length == 0 || listWifi == null  && is_init==true}}">
+    <view class="error-img">
+			<image src="{{error_bg}}" mode="widthFix" class="bg" style="width: 550rpx;"></image>
+	  </view>
+    <view class="tip">暂未设置WIFI，请咨询商家</view>
+    </view>
+    <view wx:elif="{{listWifi.length > 0 && is_init==true}}">
+
+    <view class="banner" style="background: {{button_bg_color}};">
+			<image src="../../img/wifi-bg.jpg" mode="widthFix" class="bg"></image>
+      <text class="header-title" style="color:{{button_font_color}}">{{shop_name}}WIFI连接<br />
+        <text style="font-size: 14px;display: block;margin-top: 20px;font-weight: 400;">请选择当前可搜索到的wifi进行一键连接</text>
+      <text style="font-size: 14px;display: block;margin-top: 2px;font-weight: 400;">若wifi连接失败，可复制密码后到手机设置下连接使用</text>
+      </text>
+	  </view>
+	  <view class="content">
+			<view class="entrance">
+        <view class="wifi-list " wx:for="{{listWifi}}" wx:key="index">
+            <view class="wifi-list-item " data-username="{{item.username}}" data-pwd="{{item.pwd}}" bindtap="showCover">
+              <view class="wifi-img"> <image mode="aspectFit" style="width: 40rpx;height: 40rpx;" src="../../img/wifi.png"></image></view>
+              <view class="lookup" data-username="{{item.username}}" data-pwd="{{item.pwd}}" ></view>
+              <view class="detail">
+                <view class="detail1"> 
+                  <view class="start">
+                    {{item.username}}
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+   
+			</view>
+    </view>
+    <view wx:if="{{isShow}}" class='cover'>
+      <!-- 可在此按需求自定义遮罩 -->
+      <view class='cover_child'>
+        <view class="close"><image src='../../img/close.png' class='close_ico' bindtap='hideCover'></image></view>
+        <view class="title">WIFI信息</view>
+        <view class="info">
+          <view class="info_username">WIFI名称：{{username}}</view>
+          <view class="info_pwd">WIFI密码：{{pwd}}</view>
+        </view>
+        <view class='btn-group'>
+          <button  class="copy" data-pwd="{{pwd}}" bindtap="copyPwd">复制密码</button> 
+          <button  class="link" bindtap="connectWifi" disabled="{{isClick}}" style="background: {{button_bg_color}};color:{{button_font_color}}">一键连接</button></view>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+<view class="foot-fixed">
+  <block wx:for="{{nav_list}}" wx:key="unique">
+    <navigator  id="navIndex"  style="width:{{foot_width}}" class="foot-item " url="{{item.url}}">
+        <view class="foot-icon" style="background: url({{item.photo}}) center center no-repeat; background-size: contain;"></view>                    
+        <text class="foot-label" id="navIndexLabel">{{item.nav_name}}</text>
+    </navigator >
+    </block>
+</view>

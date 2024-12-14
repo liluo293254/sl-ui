@@ -1,0 +1,83 @@
+<view class="container-show-footer">
+<view>
+  <!-- 导航 -->
+  <view class='top_nav'>
+    <view class="nav-name {{item.typeId == currentId ? 'nav-hover':''}}" wx:for="{{section}}" wx:key="id" id='{{item.typeId}}' catchtap='handleTap'>
+     <text class="nav-title">{{item.name}}</text>
+    </view>
+  </view>
+  <!-- <view hidden='{{currentId!=1}}'> -->
+  <view wx:if="{{order_none == 1}}" class="noDataImg">
+    <image src="{{host}}/Public/img/no_data.png"/>
+    <text class="noDataTips">暂无订单数据</text>
+  </view>
+    <view class="order">
+      <view class="in-progress white" wx:for="{{orderList}}"  wx:key="index">
+        <view class="order-in">
+            <image src="{{host}}{{item.statusImage}}" mode="" style="vertical-align: middle;" class="image20"/>
+            <text class="order-progress color6" style="vertical-align: middle;">{{item.statusName}}</text>
+          <button class="share colorD3" bindtap="onShareAppMessage" open-type='share' data-order_id="{{item.order_id}}">分享</button>
+        </view>
+        <view class="room-intro" bindtap="gotoDetail" data-is_postpaid="{{item.is_postpaid}}" data-card_rec_id="{{item.card_rec_id}}" data-order_status="{{item.order_status}}" data-order_id="{{item.order_id}}" data-url="{{host}}/user/booking/detail/order_id/{{item.order_id}}">
+          <image src="{{host}}{{item.room_photo}}" mode="" class="image60" />
+          <view class="roomintro-text">
+            <text class="roomintro-name1 color3">已消毒：{{item.room_name}}</text>
+            <text class="roomintro-name2 color6">{{item.shop_name}}</text>
+          </view>
+        </view>
+        <view class="room-time">
+          <view class="room-time1">
+            <view class="time-start">
+              <text class="timestart-date color9">{{item.startDate}} {{item.startWeek}}</text>
+              <text class="timestart-point color3">{{item.startTime}}</text>
+            </view>
+            <view class="time-long">
+              <view class="timelong-de">
+                <view class="line colorE6"></view>
+                <text class="timelong-text color9">时长</text>
+                <view class="line colorE6"></view>
+              </view>
+
+              <text wx:if="{{item.is_postpaid==0}}" class="timelong-con color3">{{item.longTime}}</text>
+              <text wx:elif="{{item.is_postpaid==1 && item.order_status==2}}" class="timelong-con color3">{{item.longTime}}</text>
+            </view>
+            <view wx:if="{{item.is_postpaid==0}}" class="time-end">
+              <text class="timeend-date color9">{{item.endDate}} {{item.endWeek}}</text>
+              <text class="timeend-point color3">{{item.endTime}}</text>
+            </view>
+            <view  wx:elif="{{item.is_postpaid==1 && item.order_status==2}}" class="time-end">
+              <text class="timeend-date color9">{{item.endDate}} {{item.endWeek}}</text>
+              <text class="timeend-point color3">{{item.endTime}}</text>
+            </view>
+            <view wx:else class="time-end">
+              <text class="timeend-date color9">订单进行中</text>
+              <text class="timeend-point color3">{{item.statusName}}</text>
+            </view>
+          </view>
+        </view>
+        <view class=" payment  color6">
+          <text>支付方式：{{item.payment_des}}</text>
+        </view>
+        <view class=" order-time color6 ">
+          <text>下单时间：{{item.orderTime}}</text>
+        </view>
+      </view>
+    </view>
+  <!-- </view> -->
+
+</view>
+</view>
+
+<view class="poster" wx:if="{{showPopup == 1}}" bindtap="settingOpen">
+  <view class="advert">
+    <!-- <view class="close-item" bindtap="settingOpen" data-type="0">×</view> -->
+    <view class="tui-list-box">
+      <view class="tui-menu-list" wx:for="{{showSelect}}" wx:key="id" data-id='{{item.id}}' data-other="{{item.other}}" data-name="{{item.text}}" catchtap='selectChange'>
+        <text>{{item.text}}</text>
+        <!-- <switch class="tui-fr"  /> -->
+      </view>
+    </view>
+  </view>
+</view>
+<import src="../public/footer.wxml"/>
+<template is="footer-nav" data="{{nav_list:nav_list,foot_width:foot_width}}"></template>

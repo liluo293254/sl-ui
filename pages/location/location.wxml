@@ -1,0 +1,5 @@
+<map markers="{{ mapMarker }}" longitude="{{ obj.longitude }}" latitude="{{ obj.latitude }}" style="width:{{ safeArea.width }}px; height:{{ safeArea.height - safeArea.top }}px;">
+<view class="map-link">
+  <button type="primary" bindtap="open" class="open">点击导航</button>
+</view>
+</map>

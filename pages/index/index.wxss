@@ -1,0 +1,16 @@
+.user-nickname,
+.user-gender{
+  text-align: center;
+}
+.user-gender{
+  margin-top: 20rpx;
+}
+.user-avater{
+  width: 120rpx;
+  height: 120rpx;
+  margin: 20rpx auto;
+}
+.user-avater image{
+  width: 100%;
+  border-radius: 100%;
+}

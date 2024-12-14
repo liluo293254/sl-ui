@@ -1,0 +1,20 @@
+<view class="container-show-footer">
+<!-- 便捷入口 -->
+<view class="conven">
+  <!-- 功能 -->
+  <view class="conven1">
+
+    <view class="conven-small">
+      <block wx:for="{{contentBar}}" wx:key="unique">
+        <view class="conven-small-list" style="width:{{contentBarWidth}}" catchtap="goNavLink" data-url="{{item.url}}" data-type="{{item.type}}">
+          <image src="{{item.image}}" alt="" />
+          <text>{{item.name}}</text>
+        </view>
+        
+      </block>
+    </view>
+  </view>
+</view> 
+</view>
+<import src="../public/footer.wxml" />
+<template is="footer-nav" data="{{nav_list:nav_list,foot_width:foot_width}}"></template>

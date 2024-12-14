@@ -1,0 +1,341 @@
+.toggle-header-bg {
+  padding-top: 10px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.slide-swiper {
+  height: 220px;
+}
+
+.slide-image {
+  width: 95%;
+  height: 220px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  text-align: center;
+  margin: 0 2.5%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.swiperText  {
+  width: 95%;
+  height: 40px;
+  position: absolute;
+  top: 150px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: rgba(0, 0, 0, .2);
+  border-radius: 0  0 10px 10px;
+}
+
+ .swiperText1 {
+  float: left;
+  padding: 10px 0 10px 10px;
+  width: 82%;
+  height: 22px;
+  line-height: 22px;
+  overflow: hidden;
+}
+
+ .swiperMore {
+  position: relative;
+  display: block;
+  float: right;
+  width: 15%;
+  padding: 10px 0;
+  text-align: center
+}
+
+
+
+/* 便捷入口 */
+.conven {
+  width: 95%;
+  margin: auto;
+}
+
+.conven1 {
+  width: 100%;
+  height: 180px;
+  margin-top: 15px;
+  display: flex;
+  border-radius: 10px;
+  box-shadow: 0px 1px 10px rgb(205 223 233);
+  flex-direction: column;
+}
+
+.conven-big {
+  width: 100%;
+  margin: auto;
+  border-bottom: 1px solid #eee;
+}
+
+.conven-big1 {
+  margin: auto;
+  display: flex;
+}
+.mall {
+  background-color: #eee;
+  width: 1px;
+  height: 50px;
+  margin: 20px 0;
+}
+.conven-big-list {
+  height: 70px;
+  display: flex;
+  margin: 10px auto;
+  background-color: #f7f7f7;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.conven-big-list image {
+  width: 50px;
+  height: 50px;
+}
+
+.conven-big-name {
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.conven-big-name h4 {
+  line-height: 25px;
+  font-size: 17px;
+  color: black;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.conven-big-name text {
+  width: 100px;
+  line-height: 20px;
+  color: rgb(199, 196, 196);
+  font-size: 12px;
+  margin: 5px 0;
+}
+
+.conven-small {
+  width: 100%;
+  height: 85px;
+  background-color: white;
+  display: flex;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.conven-small-list {
+  width: 25%;
+  margin: 10px 0;
+  border-right: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+}
+
+.conven-small-list image {
+  width: 35px;
+  height: 35px;
+  background-color: white;
+  text-align: center;
+  margin: auto;
+}
+
+.conven-small-list p {
+  line-height: 20px;
+  color: #333;
+  font-size: 14px;
+  background-color: white;
+  margin: auto;
+}
+
+/* 应用列表 */
+.apply {
+  margin-top: 15px;
+}
+
+.applylist {
+  width: 95%;
+  height: 115px;
+  margin: 15px auto;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0px 1px 10px rgb(205 223 233);
+  margin-top: 10px;
+  padding: 10px 0 0 0;
+
+}
+
+.applylist-item {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+}
+
+.applylist-img {
+  width: 75px;
+  height: 75px;
+  margin-left: 10px;
+  border-radius: 10px;
+  background-color: white;
+  object-fit: cover;
+}
+
+.applylist-text {
+  width: 50%;
+  height: 70px;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  background-color: white;
+}
+
+.title {
+  color: #000;
+  font-size: 14px;
+  width: 100%;
+  margin: auto;
+  background-color: white;
+  letter-spacing: 4px;
+
+}
+
+.button {
+  width: 120px;
+  height: 30px;
+  border-radius: 20px;
+  margin: auto;
+  text-align: center;
+  line-height: 30px;
+  font-size: 13px;
+  color: #fff;
+  background-color: #1c70cc;
+
+}
+
+.introduce {
+  display: inline-flex;
+  margin-top: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
+  background-color: white;
+margin-bottom: 10px;
+}
+
+.introduce-one {
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 12px;
+  background-color: #cfcfcf;
+  padding: 1px 2px;
+  width: 57px;
+}
+
+.introduce-two {
+  margin-left: 15px;
+  line-height: 20px;
+  font-size: 12px;
+  color: rgb(199, 196, 196);
+  background-color: white;
+  height: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 264px;
+
+  text-overflow: ellipsis;
+
+  -o-text-overflow: ellipsis;
+}
+
+
+
+.recommend {
+  margin-top: 20px;
+  display: flex;
+
+}
+
+.recommend1 {
+  width: 90%;
+  height: 20px;
+  margin: auto;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.recommend image {
+  height: 20px;
+  width: 20px;
+  display: flex;
+}
+
+.apply {
+	display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 95%;
+		height: 130px;
+		box-shadow: 0px 0px 15px #ccc;
+		margin-top: 15px;
+		border-radius: 10px;
+		background-image: url('/static/default/wap/image/01/applyImg.jpg');
+		    background-size: 202% 450%;
+	}
+	.apply-name {
+		height: 40px;
+	}
+	.apply-name1 {
+	background-color: #ccc;
+	    color: white;
+	    line-height: 25px;
+	    width: 27%;
+	    height: 25px;
+	    text-align: center;
+	    border-radius: 10px;
+	    font-style: oblique;
+	    margin-top: 9px;
+	    margin-left: 10px;
+	    letter-spacing: 0.3em;
+	}
+	.iconfont {
+		color: #4aa2d0;
+	}
+	.applylist {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 11px;
+    background-color: #fff;
+    height: 86px;
+    /* border-bottom: 10px; */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+	}
+	.applylist-item {
+	display: flex;
+	    flex-direction: column;
+	    width: 25%;
+	    margin: auto;
+	    text-align: center;
+		border-right: 1px solid #eee;
+	}
+	.applylist-item span {	
+		margin-top: 5px;
+	}
+	.apply-img {
+	width: 35px;
+	    height: 35px;
+	    font-size: 35px;
+	    margin: auto;
+		margin-top: 5px;
+	}

@@ -1,0 +1,62 @@
+<!-- <view class="bind-header" style="background-color: {{header_color}};">
+  <image class="header-logo" src="{{siteInfo.logo}}" mode="scaleToFill" />
+</view> -->
+<privacy-dialog />
+<form bindsubmit='handleBindMobile'>
+  <view class="bind-form">
+    <block>
+      <button class="avatar" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+        <image src="{{avatarUrl}}"></image>
+        <text style="width: 100%;display: block;font-weight: 400;">点击上传头像</text>
+      </button> 
+  </block>
+  <block>
+    <input type="nickname" maxlength="16" minlength="2" class="weui-input" placeholder="请输入昵称" bindinput="getInput" value="{{nickName}}" />
+  </block>
+    <checkbox-group name="user_agreement" bindchange="checkboxChange" class="checkbox-group" style="text-align: center;">
+      <label class="checkbox">
+        <checkbox value="1" />已阅读并同意<text style="color:{{button_bg_color}}"  bindtap="openAgreement" data-type="1">《用户隐私协议政策》</text>
+      </label>
+    </checkbox-group> 
+    <view class="form-group">
+      <view class="form-field {{ !userMobile ? 'form-button' : 'form-input' }}">
+        <block wx:if="{{ !userMobile }}">
+          <button type="primary" wx:if="{{user_agreement == 0}}" bindtap="toastMsg" data-msg="请阅读并同意用户隐私协议" style="background-color: {{button_bg_color}};color:{{button_font_color}};">获取手机号并提交</button>
+          <button type="primary" wx:else="{{user_agreement == 1}}" open-type="getPhoneNumber" bindgetphonenumber="getUserPhoneDetail"  style="background-color: {{button_bg_color}};color:{{button_font_color}};">获取手机号并提交</button>
+          <button type="primary" bindtap="navigateBack" style="background-color: #ffffff;color:#333;margin-top: 10px;border-radius: 50px;border: 1px solid;">暂不登录</button>
+        </block>
+        <block wx:else>
+          <input name="mobile" class="input" disabled="true" placeholder="请输入手机号码" value="{{ userMobile }}" />
+        </block>
+      </view>
+    </view>
+    <block wx:if="{{ isNewUser }}">
+      <view class="form-group">
+        <view class="form-field form-input">
+          <input name="password" class="input" password="true" placeholder="请输入登录密码" />
+        </view>
+      </view> 
+    </block>
+    <block wx:if="{{ userMobile }}">
+      <view class="form-group">
+        <view class="form-field form-button">
+          <button class="button" type="primary"  formType="submit"  style="background-color: {{button_bg_color}};color:{{button_font_color}};">绑定手机号</button>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view class="poster" wx:if="{{show_agreement == 1}}">
+  <view style="margin: 20px auto;text-align: center;color: #fff;font-size: 30px;font-weight: bold;">
+    <view class="close-item" bindtap="openAgreement" data-type="0">×</view>
+  </view>
+  <view class="advert">
+    <view class="tui-list-box">
+      <view class="title" style="text-align: center;font-weight: bold;margin: 10px;"><text>用户隐私协议</text></view>
+      <rich-text nodes="{{nodes}}"></rich-text>
+    </view>
+  </view>
+</view>
+</form>
+
+

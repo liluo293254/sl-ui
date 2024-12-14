@@ -1,0 +1,347 @@
+
+<privacy-dialog />
+<view class="container-show-footer">
+  <view class="nav" style="background: -webkit-linear-gradient(top,{{button_bg_color}},{{button_bg_color}},white);">
+  </view>
+  <!-- 搜索栏 -->
+  <view class="search">
+  <view style="width: 95%;position: absolute;text-align: center;margin-top: -35px;font-size:16px;font-weight: bold;color:#fff;"><text>智感美城</text></view>
+  <view class="locat" catchtap="goPagesLink" data-url="/pages/index/shopcity">
+        <text>{{address}}</text>
+        <!-- <image src="{{host}}/static/images/向下.png" mode="widthFix"  class="image16"/> -->
+        <icon class="iconfont icon-102fangxiang_xiangxia" style="font-size:12px;margin-left:3px;line-height: 6;"></icon>
+      </view>
+      <!-- 一般情况下的搜索框显示 -->
+      <view wx:if="{{!focus}}" class='search-bar white'>
+        <!-- <image class="search_image image16" src='{{host}}/static/images/搜索.png'></image> -->
+        <icon class="iconfont icon-sousuo" style="line-height: 35px;float: left;margin-left: 10px;margin-right: 10px;"></icon>
+        <input type='text' placeholder='输入搜索关键字' placeholder-class="center" confirm-type='search' bindfocus="focusHandler" bindinput="searchInput" bindconfirm="searchConfirm" value="{{ selectKeyWord }}"></input>
+        <icon bindtap="wechatScan" class="iconfont icon-saoma" style="line-height: 35px;float: right;right: 10px;position: relative;"></icon>
+      </view>
+      <!-- 获得焦点时的搜索框，多一个取消按钮 -->
+      <view wx:if="{{focus}}" class='search-bar white'>
+        <input class="search_input" type='text' placeholder='输入搜索关键字' confirm-type='search' value="{{inputValue}}" bindinput='query'>
+        </input>
+        <image class="search_image image16" src='' bindtap='cancelHandler'></image>
+      </view>
+      <!-- 搜索结果显示框 -->
+      <scroll-view wx:if="{{focus}}" class="scrollview" scroll-y="true">
+        <view wx:for="{{list}}" wx:key="unique">
+          <view class="scrollItem">
+            <text class="font1" space="nbsp">{{item.name}}</text>
+            <text class="font2" space="nbsp">{{item.num}} </text>
+          </view>
+        </view>
+      </scroll-view>
+      <!-- <image src="{{host}}/static/images/地图.png" mode="widthFix" catchtap="goPagesLink" data-url="/pages/map/map" class="map image24" /> -->
+      <view class="item-right" catchtap="goPagesLink" data-url="/pages/map/community">
+        <icon class="iconfont icon-zuobiao" style="font-size: 18px; margin-top: -10px;"></icon>
+        <text>地图</text>
+      </view>
+  </view>
+<!-- 搜索后将暂时关闭广告导航 -->
+<block wx:if="{{show_ad_item == 1}}">
+  <view class="toggle-header-bg" style="margin-bottom: 10px;">
+    <!-- 轮播图 -->
+    <swiper class="slide-swiper" indicator-dots="{{indicatorDots}}" indicator-active-color="#ffffff" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{imgUrls}}" wx:key="unique">
+        <swiper-item>
+          <view class="image-wrapper">
+            <image src="{{item}}" class="slide-image" />
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- <view class="toggle-header-bg" catchtap="goPagesLink" data-url="{{jiameng.link_url}}" wx:if="{{jiameng.images}}">
+    <image src="{{jiameng.images}}" class="jiameng-image" />
+  </view> -->
+  <!-- 导航 -->
+  <view class="conven" wx:if="{{contentNavBar.length > 0}}" style="box-shadow: 0 0 10px 0 #eee;width: 95%;">
+    <view class="convenlist"  wx:for="{{contentNavBar}}" style="width:{{contentNavBarWidth}};" catchtap="goNavLink" data-type="{{item.linkType}}" data-url="{{item.url}}" data-appid="{{item.appid}}" wx:key="unique">
+      <image src="{{item.image}}" mode="widthFix" class="image40" />
+      <text class="colorDC">{{item.name}}</text>
+    </view>
+  </view>
+  <view class="conven" wx:else="{{contentBar.length > 0}}">
+    <view class="conven-small">
+        <block wx:for="{{contentBar}}">
+          <view class="convenlist txt-line" wx:if="{{bookingtype != item.type || item.type == 0}}" style="width:{{contentBarWidth}};background-color: {{button_bg_color}};color:{{button_font_color}};"  bindtap="choseBookingType" data-type="{{item.type}}" data-url="{{item.url}}" data-minipage="{{item.mini_page}}" wx:key="unique" >
+            <text>{{item.name}}</text>
+          </view>
+          <view class="convenlist txt-line" wx:else="{{bookingtype == item.type}}" style="width:{{contentBarWidth}};background-color: {{button_bg_color}};color:#fff;opacity: 0.7;" bindtap="choseBookingType" data-type="{{item.type}}" data-url="{{item.url}}" data-minipage="{{item.mini_page}}" wx:key="unique">
+            <text>{{item.name}}</text>
+          </view>
+        </block>  
+   </view>
+  </view>
+  <!-- 导航 -->
+  <!-- 广告 -->
+  <view class="conven" wx:if="{{block_data1.length > 0}}">
+    <view class="toggle-header-bg">
+      <block wx:for="{{block_data1}}" wx:key="unique">
+        <image src="{{item.image}}" mode="aspectFill" class="image-ad"  catchtap="goPagesLink" data-url="{{item.url}}" />
+      </block>
+    </view>
+  </view>
+  <view class="conven" wx:if="{{block_data_default == 1}}">
+        <view class="conven-big">
+          <view class="conven-big1">
+            <view class="conven-big-list" catchtap="goPagesLink" data-url="/pages/mapaddr/mapaddr">
+              <image src="{{host}}/Public/img/shopopen.jpg" alt="" />
+              <view class="conven-big-name">
+                <h4>我要入驻</h4>
+                <text>Settle In</text>
+              </view>
+            </view>
+            <!-- <text class="mall"></text> -->
+            <view class="conven-big-list" style="margin: 10px 0 10px auto;" bindtap="goH5Link" data-url="{{host}}/wap/favorites/index">
+              <image src="{{host}}/Public/img/sign.png" alt="" />
+              <view class="conven-big-name">
+                <h4>我的收藏</h4>
+                <text>Collection</text>
+              </view>
+            </view>
+          </view>
+        </view>
+  </view>
+
+    <view class="conven1 services" wx:if="{{block_data2.length > 0}}">
+    <view class="services-big">
+      <view class="card-services-one" bindtap="goNavLink" data-type="{{block_data2[0].type}}" data-url="{{block_data2[0].url}}">
+        <image src="{{block_data2[0].image}}" mode="aspectFill"/>
+      </view>
+      <view class="services-middile">
+        <view class="card-services-two" bindtap="goNavLink" data-type="{{block_data2[1].type}}" data-url="{{block_data2[1].url}}">
+          <image src="{{block_data2[1].image}}" mode="aspectFill"/>
+        </view>
+        <view class="services-small">
+          <view class="card-services-three" bindtap="goNavLink" data-type="{{block_data2[2].type}}" data-url="{{block_data2[2].url}}">
+            <image src="{{block_data2[2].image}}" mode="aspectFill"/>
+          </view>
+          <view class="card-services-four" bindtap="goNavLink" data-type="{{block_data2[3].type}}" data-url="{{block_data2[3].url}}">
+            <image src="{{block_data2[3].image}}" mode="aspectFill"/>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 广告 -->
+</block>
+<block wx:if="{{ad89.length>0}}">
+  <view class="conven" style="width: 95%;margin:0 auto 10px;height: 100px;" >
+      <swiper style="width: 100%;" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{ad89}}" wx:key="unique">
+          <swiper-item>
+            <view class="image-wrapper">
+              <image src="{{item.images}}" mode="aspectFill" bindtap="goPagesLink" indicator-active-color="#ffffff" data-url="{{item.link_url}}" class="" style="width: 100%;height: 100px;object-fit:cover;border-radius: 10px;" />
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+</block>
+<!-- 列表 start -->
+<block wx:if="{{showlist == 1}}">
+<block wx:if="{{taskList.length>0}}">
+<scroll-view class="scroll-wrapper" scroll-x scroll-with-animation="true" scroll-into-view="item{{currentTab < 4 ? 0 : currentTab - 3}}" style="{{fixedNavStyle}}">
+  <view class="navigate-item" id="item{{index}}" wx:for="{{taskList}}" wx:key="index" data-index="{{index}}" bindtap="handleClick" data-type="{{item.type}}" data-showtype="{{item.showtype}}">
+    <view class="names {{currentTab === index ? 'active' : ''}}" style="--color--:{{ viewActionColor }}">{{item.name}}<text class="des" style="display:block;--color--:{{ viewActionColor }}">{{item.des}}</text></view>
+    <view class="currtline {{currentTab === index ? 'active' : ''}}" style="--color--:{{ viewActionColor }}"></view>
+  </view>
+</scroll-view>
+</block>
+          <!-- 栏目展示 start -->
+          
+          <view class="room" style="{{NavValueStyle}}">
+            <!-- 搜索空值展示 -->
+            <view wx:if="{{showNone == 0 && shopList.length == 0}}" style="text-align: center;margin-top: 10%;">
+              <image src="{{host}}/Public/img/no_data.png" mode="aspectFill" />
+              <view style="width: 100%;">数据加载中...</view>
+            </view>
+            
+            <!-- 有导航菜单时才显示缺省图 -->
+            <view wx:elif="{{showNone == 1 && taskList.length>0}}" style="text-align: center;margin-top: 10%;">
+              <image src="{{host}}/Public/img/no_data.png" mode="aspectFill" />
+              <view style="width: 100%;">查无数据</view>
+            </view>
+            
+            
+            <block wx:for="{{shopList}}" wx:key="unique">
+            <!-- 社区数据 -->
+            <block wx:if="{{tasktype == 'community'}}">
+            <view class="room-right">
+              <view style="width: 100%;float: left;">
+                <view class="room-thumb-item">
+                  <image src="{{item.photo}}" mode="aspectFill" class="room-img"  bindtap="goRoomList" data-id="{{item.community_id}}" data-url="" />
+                </view>
+                <view class="room-info-item">
+                  <view class="room-text white" bindtap="goRoomList" data-id="{{item.community_id}}" data-url="">
+                    <text class="color1A title">{{item.name}}</text>
+                  </view>
+                  <view class="room-icon">
+                    <view class="room-time">
+                    <text>物业公司：{{item.property}}</text>
+                    </view>
+                  </view>
+                  <view class="room-icon">
+                    <view class="room-distance">
+                      <text style="color: {{button_bg_color}};border:1px solid">距我当前：{{item.distance}}</text>
+                    </view>
+                  </view>
+                  <view class="room-icon">
+                    <view class="icon-bg" style="color: #000;">
+                      <icon class="iconfont icon-daohangdizhiweizhi" bindtap="goMap" data-lat="{{item.lat}}" data-lng="{{item.lng}}" data-addr="{{item.addr}}" data-name="{{item.name}}"><text>导航</text></icon>
+                    </view>
+                    <view class="icon-bg" style="color:#000;">
+                      <icon class="iconfont icon-24gf-telephone" bindtap="makeCall" data-tel="{{item.tel}}"><text>电话</text></icon>
+                    </view>
+                    <text class="icon-button" style="background-color: {{list_button_bg_color}};color:{{button_font_color}};height: 50rpx;line-height: 50rpx;font-size: 28rpx;margin: 4rpx 0 0;" bindtap="goRoomList" data-id="{{item.community_id}}" data-url="">进入小区</text>
+                  </view>
+                </view>
+              </view>
+                <view class="white room-addr"  bindtap="goMap" data-lat="{{item.lat}}" data-lng="{{item.lng}}" data-addr="{{item.addr}}" data-name="{{item.name}}" >
+                  <icon class="iconfont icon-zuobiaofill des"></icon>
+                  <text class="des">{{item.addr}}</text>
+                </view>
+              </view>
+            </block>
+
+
+            <!-- 门店数据 -->
+            <block wx:elif="{{tasktype != 'community' && taskshowtype == 1}}">
+            <view class="room-right">
+              <view style="width: 100%;float: left;">
+                <view class="room-thumb-item">
+                  <image src="{{item.logo}}" mode="aspectFill" class="room-img"  bindtap="goRoomList" data-id="{{item.shop_id}}" data-url="{{item.url}}" />
+                  <block wx:if="{{tasktype == 'booking'}}">
+                    <text class="image-tag" wx:if="{{item.closed == 0}}">营业中</text>
+                    <text class="image-tag red" wx:else="">即将开业</text>
+                  </block>
+                </view>
+                <view class="room-info-item">
+                  <view class="room-text white" bindtap="goRoomList" data-id="{{item.shop_id}}" data-url="{{item.url}}">
+                    <text class="color1A title">{{item.shop_name}}</text>
+                  </view>
+                  <view class="room-icon">
+                    <view class="room-time">
+                      <text>营业时间：{{item.business_time}}</text>
+                    </view>
+                  </view>
+                  <view class="room-icon">
+                    <view class="room-distance">
+                      <text style="color: {{button_bg_color}};border:1px solid">距我当前：{{item.distance}}</text>
+                    </view>
+                  </view>
+                  <view class="room-icon">
+                    <view class="icon-bg" style="color: #000;">
+                      <icon class="iconfont icon-daohangdizhiweizhi" bindtap="goMap" data-lat="{{item.lat}}" data-lng="{{item.lng}}" data-addr="{{item.addr}}" data-name="{{item.shop_name}}"><text>导航</text></icon>
+                    </view>
+                    <view class="icon-bg" style="color:#000;">
+                      <icon class="iconfont icon-24gf-telephone" bindtap="makeCall" data-tel="{{item.tel}}"><text>电话</text></icon>
+                    </view>
+                    <text wx:if="{{tasktype == 'booking'}}" class="icon-button" style="background-color: {{list_button_bg_color}};color:{{button_font_color}};height: 50rpx;line-height: 50rpx;font-size: 28rpx;margin: 4rpx 0 0;" bindtap="goRoomList" data-id="{{item.shop_id}}" data-url="{{item.url}}">前往预订</text>
+                    <text wx:else class="icon-button" style="background-color: {{list_button_bg_color}};color:{{button_font_color}};height: 50rpx;line-height: 50rpx;font-size: 28rpx;margin: 4rpx 0 0;" bindtap="goRoomList" data-id="{{item.shop_id}}" data-url="{{item.url}}">进入门店</text>
+                  </view>
+                </view>
+              </view>
+                <view class="white room-addr"  bindtap="goMap" data-lat="{{item.lat}}" data-lng="{{item.lng}}" data-addr="{{item.addr}}" data-name="{{item.shop_name}}" >
+                  <icon class="iconfont icon-zuobiaofill des"></icon>
+                  <text class="des">{{item.addr}}</text>
+                </view>
+              </view>
+            </block>
+
+            <block wx:if="{{taskshowtype == 2}}" wx:key="unique">
+              <view class="room-right">
+              <view style="width: 100%;float: left;">
+                <view class="room-thumb-item goods-img-item">
+                  <image src="{{item.photo}}" mode="aspectFill" class="room-img" bindtap="goRoomList" data-id="{{item.shop_id}}" data-url="{{item.url}}" />
+                </view>
+                <view class="room-info-item" bindtap="goRoomList" data-id="{{item.shop_id}}" data-url="{{item.url}}">
+                  <view class="room-text white">
+                    <text class="color1A title">{{item.title}}</text>
+                  </view>
+                  <view class="room-icon" style="height: 20px;">
+                    <view class="room-time">
+                      <text>{{item.intro}}</text>
+                    </view>
+                  </view>
+                  <view class="room-icon">
+                    <view>
+                      <text style="color: #ee3333;font-size: 12px;"><text style="font-size: 16px;">{{item.price}}</text></text>
+                    </view>
+                    <text class="icon-button" style="background-color: {{list_button_bg_color}};color:{{button_font_color}};height: 50rpx;line-height: 50rpx;font-size: 28rpx;margin: 4rpx 0 0;" bindtap="goRoomList" data-id="{{item.shop_id}}" data-url="{{item.url}}">{{item.button_name}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </block>
+
+
+
+            </block> 
+            <view wx:if="{{showNoMore == 1}}" style="text-align: center;margin-top: 30px;">
+              <text>没有更多数据了~</text>
+            </view>
+          </view>
+          <!-- 栏目切换 end -->
+
+</block>
+</view>
+
+<!-- 列表 end -->
+<!-- 弹窗 start-->
+<view class="ruleZhezhao {{index_mask.index_mask_show==1?'isRuleShow':'isRuleHide'}}">
+    <view class="mask2"  wx:if="{{index_mask.index_mask_title}}">
+      <view class="iboxx n-cus-bb animated bounceIn animationd05">
+        <view class="n-cus-b">
+          <view class="top1" data-url="{{index_mask.index_mask_url}}"  bindtap="indexMaskUrl">
+            <h2><b>{{index_mask.index_mask_title}}</b></h2>
+            <span style="left:0px;"></span>
+          </view>
+          <view class="bottom1" data-url="{{index_mask.index_mask_url}}" bindtap="indexMaskUrl">
+            <view class="notice">
+              
+              <rich-text nodes="{{index_mask.index_mask_textarea}}" style="font-family: auto;white-space: pre-line;"></rich-text>
+            </view>
+            <view class="notice " style="margin-bottom: 0px;" wx:if="{{index_mask.index_mask_img != ''}}">
+              <image src="{{host+index_mask.index_mask_img}}" mode="widthFix" style="width: 100%;" />
+            </view>
+          </view>
+          <view class="bs">
+            <view class="toggle-normal-checkbox" wx:if="{{index_mask.index_mask_read == 1}}">
+              <label class="radio" for="mask_read">
+                <radio checked="{{checked}}" bindtap="checked" color="{{button_bg_color}}" style="transform: scale(0.8);height:30px;line-height: 30px;" />{{index_mask.index_mask_read_title}}
+              </label>
+            </view>
+            <text wx:if="{{index_mask.index_mask_read == 1}}" class='url' bindtap='hideRule' style="color: {{button_font_color}};background-color: {{button_bg_color}};"  >确定</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="mask2" style="width: 80%;margin-top: 25%;" wx:else="">
+        <!-- 展示图片 -->
+        <view bindtap="indexMaskUrl" data-url="{{index_mask.index_mask_url}}" class="notice " style="margin-bottom: 0px;" wx:if="{{index_mask.index_mask_img != ''}}">
+          <image src="{{host+index_mask.index_mask_img}}" mode="widthFix" style="width: 100%;" />
+        </view>
+    </view>
+    <view class="close" wx:if="{{index_mask.index_mask_read == 0}}">
+      <text class="icon-dacha iconfont " style="color: #fff;font-weight: 800;" bindtap='hideRule2'></text>
+    </view>
+  </view>
+<!-- 弹窗 end-->
+
+<view wx:if="{{customer_url}}" class="fixed-right fixed1" bind:tap="goPagesLink" data-url="{{customer_url}}">
+  <view class="fixed-round">
+    <icon class="fixed-round-icon iconfont icon-service-fill"></icon>
+  </view>
+</view>
+<view wx:if="{{aq_url}}" class="fixed-right fixed2" bind:tap="goPagesLink" data-url="{{aq_url}}">
+  <view class="fixed-round">
+    <icon class="fixed-round-icon iconfont icon-shiyongshuoming3"></icon>
+  </view>
+</view>
+
+<import src="../public/footer.wxml"/>
+<template is="footer-nav" data="{{nav_list:nav_list,foot_width:foot_width}}"></template>

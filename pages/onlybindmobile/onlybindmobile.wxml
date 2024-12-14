@@ -1,0 +1,33 @@
+<view class="bind-header">
+  <image class="header-logo" src="{{logo}}" mode="scaleToFill" />
+</view>
+<form bindsubmit='handleBindMobile'>
+  <view class="bind-form">
+    <view class="form-group">
+      <view class="form-field {{ !userMobile ? 'form-button' : 'form-input' }}">
+        <block wx:if="{{ !userMobile }}">
+          <button type="primary" open-type="getPhoneNumber" bindgetphonenumber="getUserPhoneDetail">获取手机号</button>
+        </block>
+        <block wx:else>
+          <input name="mobile" class="input" disabled="true" placeholder="请输入手机号码" value="{{ userMobile }}" />
+        </block>
+      </view>
+    </view>
+    <block wx:if="{{ isNewUser }}">
+      <view class="form-group">
+        <view class="form-field form-input">
+          <input name="password" class="input" password="true" placeholder="请输入登录密码" />
+        </view>
+      </view> 
+    </block>
+    <block wx:if="{{ userMobile }}">
+      <view class="form-group">
+        <view class="form-field form-button">
+          <button class="button" type="primary"  formType="submit">绑定手机号</button>
+        </view>
+      </view>
+    </block>
+  </view>
+</form>
+
+

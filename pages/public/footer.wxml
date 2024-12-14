@@ -1,0 +1,10 @@
+<template name="footer-nav">
+<view class="foot-fixed">
+  <block wx:for="{{nav_list}}" wx:key="unique">
+    <navigator  id="navIndex" open-type="redirect" style="width:{{foot_width}}" class="foot-item " url="{{item.url}}">
+        <view class="foot-icon" style="background: url({{item.photo}}) center center no-repeat; background-size: contain;"></view>                    
+        <text class="foot-label" id="navIndexLabel">{{item.nav_name}}</text>
+    </navigator>
+    </block>
+</view>
+</template>

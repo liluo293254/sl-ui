@@ -1,0 +1,299 @@
+<view class="container-show-footer">
+
+<view class="toggle-header-bg">
+  <!-- 轮播图 -->
+  <view wx:if="{{change_comm_show == 1}}" class="toggle-left-flew" catchtap="goPagesLink" data-url="/pages/community/index">
+    <icon class="iconfont icon-xiangzuo1" style="display: flex;font-size:24rpx;"><text>切换社区</text></icon>
+  </view>
+  <swiper class="slide-swiper" style="height: 360rpx;" indicator-dots="{{indicatorDots}}" indicator-active-color="#ffffff" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}" wx:key="unique">
+      <swiper-item>
+        <view class="image-wrapper">
+          <image src="{{item.url}}" class="slide-image" />
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- <view class="toggle-bottom-flew">
+    <text class="toggle-bottom-info">已入驻业主<text >{{init_datas.user_owner}}</text>人</text>
+  </view> -->
+</view>
+<!-- 便捷入口 -->
+<view class="conven">
+  <!-- 小区信息 -->
+  <!-- <view class="conven1 info-wrapper">
+  <view class="info-left">
+    <view class="info-name">{{detail.name}}</view>
+    <view wx:if="{{detail.property}}" class="info-text"><icon class="iconfont icon-yly_guanliyuan"><text>{{detail.property}}</text></icon></view>
+    <view wx:if="{{detail.addr}}" class="info-text"><icon class="iconfont icon-position"><text>{{detail.addr}}</text></icon></view>
+  </view>
+  <view class="info-right">
+    <view class="icon-bg" style="color: #000;">
+        <icon class="iconfont icon-daohangdizhiweizhi" bindtap="goMap" data-lat="{{detail.lat}}" data-lng="{{detail.lng}}" data-addr="{{detail.addr}}" data-name="{{detail.name}}"></icon><text>导航</text>
+      </view>
+      <view class="icon-bg" style="color:#000;">
+        <icon class="iconfont icon-24gf-telephone" bindtap="makeCall" data-tel="{{detail.tel}}"></icon><text>电话</text>
+      </view>
+  </view>
+</view> -->
+  <!-- 公告 -->
+  <view class="conven1">
+    <view class="conven-big  " style="border-bottom: 1px solid #eee;width: 95%;">
+      <view class="infrom-flex">
+        <view class="inform">
+          <text>消息通知</text>
+        </view>
+        <view class="inform-content" wx:if="{{news.news_id}}" bindtap="goNavLink" data-type="h5" data-url="{{host}}/user/community/newsdetail/news_id/{{news.news_id}}">
+          <text>{{news.title}}</text>
+        </view>
+        <view class="inform-content" wx:else>
+          <text>{{news.title}}</text>
+        </view>
+        <view class="inform-more" bindtap="goNavLink" data-type="h5" data-url="{{host}}/user/community/tongzhi/community_id/{{community_id}}">
+          <text>更多</text>
+          <text class="iconfont icon-xiangyou1" style="color: #faa437; font-size: 12px;"></text>
+        </view>
+      </view>
+    </view>
+    <view class="conven-small">
+      <block wx:for="{{convenBar}}" wx:key="unique">
+        <view class="conven-small-list" catchtap="goNavLink" data-url="{{item.url}}" data-type="{{item.type}}" >
+          <image src="{{item.image}}" alt="" class="smallList-img"/>
+          <text>{{item.name}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+  <!-- 功能 -->
+  <view class="conven1">
+
+    <view class="conven-big">
+      <view class="conven-big1">
+        <view class="conven-big-list" bindtap="goNavLink" data-type="{{contentBigBar.one.type}}" data-url="{{contentBigBar.one.url}}">
+        <view class="big-list-img">
+          <image src="{{contentBigBar.one.image}}" alt="" />
+        </view>
+          
+          <view class="conven-big-name">
+            <h4>{{contentBigBar.one.name}}</h4>
+            <text >{{contentBigBar.one.info}}</text>
+          </view>
+          <!-- <view class="mall"></view> -->
+        </view>
+        <text class="mall"></text>
+        <!-- <view class="conven-big-list" bindtap="goNavLink" data-text="暂无设备" data-type="h5" data-url="{{host}}/wap/controlpanel/hardware_list/belongs/community/community_id/{{community_id}}"> -->
+        <!-- <view class="conven-big-list" bindtap="goNavLink" data-text="暂无设备" data-type="h5" data-url="{{host}}/user/community/hardware_list/community_id/{{community_id}}"> -->
+        <view class="conven-big-list" bindtap="goNavLink" data-text="暂无设备" data-type="{{contentBigBar.two.type}}" data-url="{{contentBigBar.two.url}}">
+          <view class="big-list-img">
+            <image src="{{contentBigBar.two.image}}" alt="" />
+        </view>
+          <view class="conven-big-name">
+            <h4>{{contentBigBar.two.name}}</h4>
+            <text>{{contentBigBar.two.info}}</text>
+          </view>
+          
+        </view>
+      </view>
+      <text class="mall1"></text>
+    </view>
+    <block wx:if="{{imgUrlsc != ''}}">
+      <view class="conven-big" >
+        <view class="conven-big1" style="justify-content: center;margin: 10px 0;">
+          <swiper class="slide-swiper" style="width: 95%;" indicator-dots="{{indicatorDots}}" indicator-active-color="#ffffff" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+            <block wx:for="{{imgUrlsc}}" wx:key="unique">
+              <swiper-item>
+                <view class="image-wrapper">
+                  <image src="{{item.url}}"  bindtap="goPagesLink" data-url="{{item.link_url}}" class="" style="width: 100%;height: 100px;object-fit:cover;border-radius: 10px;" />
+                </view>
+              </swiper-item>
+            </block>
+          </swiper>
+        </view>
+        <text class="mall1"></text>
+      </view>
+    </block>
+    <view class="conven-small">
+      <block wx:for="{{contentBar}}" wx:key="unique">
+        <view class="conven-small-list {{index == 5 ?'diver':''}}" catchtap="goNavLink" data-url="{{item.url}}" data-type="{{item.type}}" style="width:{{contentBarWidth}};">
+        <!-- <text wx:if="{{index == 4 || index == 8 || index == 12}}" class="divider"></text> -->
+          <image src="{{item.image}}" alt="" />
+          <text>{{item.name}}</text>
+        </view>
+        
+      </block>
+    </view>
+  </view>
+  <block wx:if="{{imgUrlsb != ''}}">
+    <view class="conven1 services">
+        <view class="conven-big" >
+          <view class="conven-big1" style="text-align: center;">
+            <swiper class="slide-swiper" style="width: 100%;" indicator-dots="{{indicatorDots}}" indicator-active-color="#ffffff" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+              <block wx:for="{{imgUrlsb}}" wx:key="unique">
+                <swiper-item>
+                  <view class="image-wrapper">
+                    <image src="{{item.url}}"  bindtap="goPagesLink" data-url="{{item.link_url}}" class="" style="width: 100%;height: 100px;object-fit:cover;border-radius: 10px;" />
+                  </view>
+                </swiper-item>
+              </block>
+            </swiper>
+          </view>
+        </view>
+    </view>
+  </block>
+  <!-- 服务 -->
+  <view class="conven1 services">
+    <view class="services-big">
+      <view wx:if="{{imgUrlblock1[1].url}}" class="card-services-one" bindtap="goNavLink" data-type="{{imgUrlblock1[1].type}}" data-url="{{imgUrlblock1[1].link_url}}">
+          <image src="{{imgUrlblock1[1].url}}"/>
+        </view>
+      <view wx:else class="services-one" bindtap="goNavLink" data-type="{{blockBar.one.type}}" data-url="{{blockBar.one.url}}">
+        <text class="one1">{{blockBar.one.name}}</text>
+        <view class="big-icon icon">
+          <text class="icon-xiangyou1 iconfont one2 iconright" ></text>
+        </view>
+        <image src="{{blockBar.one.image}}" mode="" class="one-img" />
+      </view>
+      <view class="services-middile">
+        <view wx:if="{{imgUrlblock1[2].url}}" class="card-services-two" bindtap="goNavLink" data-type="{{imgUrlblock1[2].type}}" data-url="{{imgUrlblock1[2].link_url}}">
+          <image src="{{imgUrlblock1[2].url}}"/>
+        </view>
+        <view wx:else class="services-two" bindtap="goNavLink" data-type="{{blockBar.two.type}}" data-url="{{blockBar.two.url}}">
+          <view class="two-text">
+            <text class="two1">{{blockBar.two.name}}</text>
+          </view>
+          <view class="middile-icon icon">
+            <text class="icon-xiangyou1 iconfont two2 iconright" ></text>
+          </view>
+          <image src="{{blockBar.two.image}}" mode="" class="two-img" />
+        </view>
+        <view class="services-small">
+          <view wx:if="{{imgUrlblock1[3].url}}" class="card-services-three" bindtap="goNavLink" data-type="{{imgUrlblock1[3].type}}" data-url="{{imgUrlblock1[3].link_url}}">
+            <image src="{{imgUrlblock1[3].url}}"/>
+          </view>
+          <view wx:else class="services-three" bindtap="goNavLink" data-type="{{blockBar.three.type}}" data-url="{{blockBar.three.url}}">
+            <view class="small-text">
+              <text class="three1">{{blockBar.three.name}}</text>
+            </view>
+            <view class="small-bottom">
+              <view class="small-icon icon">
+                <text class="icon-xiangyou1 iconfont three2 iconright" ></text>
+              </view>
+              <image src="{{blockBar.three.image}}" mode="" class="small-img" />
+            </view>
+          </view>
+          <view wx:if="{{imgUrlblock1[4].url}}" class="card-services-four" bindtap="goNavLink" data-type="{{imgUrlblock1[4].type}}" data-url="{{imgUrlblock1[4].link_url}}">
+            <image src="{{imgUrlblock1[4].url}}"/>
+          </view>
+          <view wx:else class="services-four" bindtap="goNavLink" data-type="{{blockBar.four.type}}" data-url="{{blockBar.four.url}}">
+            <view class="small-text">
+              <text class="four1">{{blockBar.four.name}}</text>
+            </view>
+            <view class="small-bottom">
+              <view class="small-icon icon">
+                <text class="icon-xiangyou1 iconfont four2  iconright" ></text>
+              </view>
+              <image src="{{blockBar.four.image}}" mode="" class="small-img" />
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<block wx:if="{{taskList.length>0}}">
+<scroll-view class="scroll-wrapper" scroll-x scroll-with-animation="true" scroll-into-view="item{{currentTab < 4 ? 0 : currentTab - 3}}" >
+  <view class="navigate-item" id="item{{index}}" wx:for="{{taskList}}" wx:key="index" data-index="{{index}}" bindtap="handleClick">
+    <view class="names {{currentTab === index ? 'active' : ''}}" style="--color--:{{ viewActionColor }}">{{item.name}}</view>
+    <view class="currtline {{currentTab === index ? 'active' : ''}}" style="--color--:{{ viewActionColor }}"></view>
+  </view>
+</scroll-view>
+
+<swiper class="module-list" style="{{taskheight}}" indicator-dots="{{false}}" indicator-active-color="#ffffff" bindchange="handleSwiper" current="{{currentTab}}">
+	<block wx:for="{{taskList}}" wx:key="idx" wx:for-item="task">
+			<swiper-item style="overflow: scroll;">
+				<scroll-view scroll-y refresher-background="#ffffff" bindscrolltolower="handleTolower">
+					
+          <!-- 栏目切换 start -->
+          
+          <block wx:for="{{task.list}}" wx:key="unique">
+            <view class="room-right">
+            <view style="width: 100%;float: left;">
+              <view class="room-thumb-item" bindtap="{{item.linktype}}" data-auth="1" data-url="{{item.url}}">
+                <image src="{{item.photo}}" mode="aspectFill" class="room-img" />
+              </view>
+              <view class="room-info-item" bindtap="{{item.linktype}}" data-auth="1" data-url="{{item.url}}">
+                <view class="room-text white">
+                  <text class="color1A title">{{item.title}}</text>
+                </view>
+                <view class="room-icon" style="height: 20px;">
+                  <view class="room-time">
+                    <text>{{item.intro}}</text>
+                  </view>
+                </view>
+                <view class="room-icon">
+                  <view>
+                    <text style="color: brown;font-size: 12px;"><text style="font-size: 16px;">{{item.price}}</text></text>
+                    <!-- <text style="color:#888;font-size: 12px;text-decoration: line-through;">￥{{item.price/100}}</text> -->
+                  </view>
+                  <!-- <text class="icon-button" style="background-color: {{button_bg_color}};color:{{button_font_color}};" bindtap="goH5Link" data-url="{{host}}/wap/tuan/detail/tuan_id/{{item.tuan_id}}">抢购</text> -->
+                </view>
+
+              </view>
+            </view>
+          </view>
+          </block>
+
+          <!-- 栏目切换 end -->
+
+				</scroll-view>
+			</swiper-item>
+	</block>
+</swiper>
+</block>
+
+<!-- 物业广告 -->
+<!-- <swiper wx:if="{{init_datas.ads}}" class="slide-swiper ad-item" indicator-dots="{{indicatorDots}}" indicator-active-color="#ffffff" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{init_datas.ads}}" wx:key="unique">
+      <swiper-item>
+        <view class="image-wrapper">
+          <image src="{{host}}{{item.photo}}" class="slide-image" />
+        </view>
+      </swiper-item>
+    </block>
+  </swiper> -->
+
+<!-- 门店 -->
+<!-- <view class="room">
+
+  <block wx:for="{{tuanList}}" wx:key="unique">
+  <view class="room-right">
+  <view style="width: 100%;float: left;">
+    <view class="room-thumb-item">
+      <image src="{{host}}{{item.photo}}" mode="aspectFill" class="room-img" bindtap="goH5Link" data-url="{{host}}/wap/tuan/detail/tuan_id/{{item.tuan_id}}" />
+    </view>
+    <view class="room-info-item">
+      <view class="room-text white" bindtap="goH5Link" data-url="{{host}}/wap/tuan/detail/tuan_id/{{item.tuan_id}}">
+        <text class="color1A title">{{item.title}}</text>
+      </view>
+      <view class="room-icon">
+        <view class="room-time">
+          <text>{{item.intro}}</text>
+        </view>
+      </view>
+      <view class="room-icon">
+        <view>
+          <text style="color: brown;font-size: 12px;">￥<text style="font-size: 16px;">{{item.tuan_price/100}}</text></text>
+          <text style="color:#888;font-size: 12px;text-decoration: line-through;">￥{{item.price/100}}</text>
+        </view>
+        <text class="icon-button" style="background-color: {{button_bg_color}};color:{{button_font_color}};" bindtap="goH5Link" data-url="{{host}}/wap/tuan/detail/tuan_id/{{item.tuan_id}}">抢购</text>
+      </view>
+
+    </view>
+  </view>
+</view>
+</block>
+</view>  -->
+</view>
+<import src="../public/footer.wxml" />
+<template is="footer-nav" data="{{nav_list:nav_list,foot_width:foot_width}}"></template>
